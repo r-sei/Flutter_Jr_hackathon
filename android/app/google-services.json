@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "943174157711",
+    "project_id": "flutterjrhackathon",
+    "storage_bucket": "flutterjrhackathon.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943174157711:android:9854fbfc54012856cab7fa",
+        "android_client_info": {
+          "package_name": "com.example.flutter_jr_hackathon"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC18DxSXI56ELtQ5-3e5s7bfj1fnKWUD_o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
