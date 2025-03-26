@@ -177,7 +177,7 @@ class _PenaltyControllerProviderElement
   Progress? get progress => (origin as PenaltyControllerProvider).progress;
 }
 
-String _$progressNotifierHash() => r'cc297e939b8475c7b1e77688d9ead84ecba44e09';
+String _$progressNotifierHash() => r'f00985d1ec6f218f3f557c7b273fe5585b9b1fa2';
 
 /// See also [ProgressNotifier].
 @ProviderFor(ProgressNotifier)

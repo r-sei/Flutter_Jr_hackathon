@@ -25,6 +25,7 @@ mixin _$Progress {
   String get progressTitle => throw _privateConstructorUsedError;
   double get achieveLevel => throw _privateConstructorUsedError;
   int get likes => throw _privateConstructorUsedError;
+  bool get isLiked => throw _privateConstructorUsedError;
 
   /// Serializes this Progress to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,7 +47,8 @@ abstract class $ProgressCopyWith<$Res> {
       String userName,
       String progressTitle,
       double achieveLevel,
-      int likes});
+      int likes,
+      bool isLiked});
 }
 
 /// @nodoc
@@ -69,6 +71,7 @@ class _$ProgressCopyWithImpl<$Res, $Val extends Progress>
     Object? progressTitle = null,
     Object? achieveLevel = null,
     Object? likes = null,
+    Object? isLiked = null,
   }) {
     return _then(_value.copyWith(
       progressID: null == progressID
@@ -91,6 +94,10 @@ class _$ProgressCopyWithImpl<$Res, $Val extends Progress>
           ? _value.likes
           : likes // ignore: cast_nullable_to_non_nullable
               as int,
+      isLiked: null == isLiked
+          ? _value.isLiked
+          : isLiked // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -108,7 +115,8 @@ abstract class _$$ProgressImplCopyWith<$Res>
       String userName,
       String progressTitle,
       double achieveLevel,
-      int likes});
+      int likes,
+      bool isLiked});
 }
 
 /// @nodoc
@@ -129,6 +137,7 @@ class __$$ProgressImplCopyWithImpl<$Res>
     Object? progressTitle = null,
     Object? achieveLevel = null,
     Object? likes = null,
+    Object? isLiked = null,
   }) {
     return _then(_$ProgressImpl(
       progressID: null == progressID
@@ -151,6 +160,10 @@ class __$$ProgressImplCopyWithImpl<$Res>
           ? _value.likes
           : likes // ignore: cast_nullable_to_non_nullable
               as int,
+      isLiked: null == isLiked
+          ? _value.isLiked
+          : isLiked // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -163,7 +176,8 @@ class _$ProgressImpl implements _Progress {
       required this.userName,
       required this.progressTitle,
       required this.achieveLevel,
-      required this.likes});
+      required this.likes,
+      required this.isLiked});
 
   factory _$ProgressImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProgressImplFromJson(json);
@@ -178,10 +192,12 @@ class _$ProgressImpl implements _Progress {
   final double achieveLevel;
   @override
   final int likes;
+  @override
+  final bool isLiked;
 
   @override
   String toString() {
-    return 'Progress(progressID: $progressID, userName: $userName, progressTitle: $progressTitle, achieveLevel: $achieveLevel, likes: $likes)';
+    return 'Progress(progressID: $progressID, userName: $userName, progressTitle: $progressTitle, achieveLevel: $achieveLevel, likes: $likes, isLiked: $isLiked)';
   }
 
   @override
@@ -197,13 +213,14 @@ class _$ProgressImpl implements _Progress {
                 other.progressTitle == progressTitle) &&
             (identical(other.achieveLevel, achieveLevel) ||
                 other.achieveLevel == achieveLevel) &&
-            (identical(other.likes, likes) || other.likes == likes));
+            (identical(other.likes, likes) || other.likes == likes) &&
+            (identical(other.isLiked, isLiked) || other.isLiked == isLiked));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, progressID, userName, progressTitle, achieveLevel, likes);
+  int get hashCode => Object.hash(runtimeType, progressID, userName,
+      progressTitle, achieveLevel, likes, isLiked);
 
   /// Create a copy of Progress
   /// with the given fields replaced by the non-null parameter values.
@@ -227,7 +244,8 @@ abstract class _Progress implements Progress {
       required final String userName,
       required final String progressTitle,
       required final double achieveLevel,
-      required final int likes}) = _$ProgressImpl;
+      required final int likes,
+      required final bool isLiked}) = _$ProgressImpl;
 
   factory _Progress.fromJson(Map<String, dynamic> json) =
       _$ProgressImpl.fromJson;
@@ -242,6 +260,8 @@ abstract class _Progress implements Progress {
   double get achieveLevel;
   @override
   int get likes;
+  @override
+  bool get isLiked;
 
   /// Create a copy of Progress
   /// with the given fields replaced by the non-null parameter values.

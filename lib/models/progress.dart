@@ -11,6 +11,7 @@ abstract class Progress with _$Progress {
     required String progressTitle,
     required double achieveLevel,
     required int likes,
+    required bool isLiked,
   }) = _Progress;
 
 factory Progress.fromJson(Map<String, dynamic> json) => _$ProgressFromJson(json);

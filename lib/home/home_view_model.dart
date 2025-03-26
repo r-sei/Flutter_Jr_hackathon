@@ -34,6 +34,7 @@ class ProgressNotifier extends _$ProgressNotifier {
         userName: '',
         progressTitle: title,
         achieveLevel: achieveLevel,
+        isLiked: false,
         likes: 0);
 
     await ref
