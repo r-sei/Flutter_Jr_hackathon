@@ -10,17 +10,18 @@ class AddNewTask extends ConsumerWidget {
       padding: const EdgeInsets.all(30),
       child: Column(
         children: [
-          Text('今週のみんなのチャレンジ！',
+          const Text('今週のみんなのチャレンジ！',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           const SizedBox(height: 30),
-          Align(
+          const Align(
               alignment: Alignment.centerLeft,
-              child: Text('タスクを追加しよう！', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold))),
+              child: Text('タスクを追加しよう！',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold))),
           //const SizedBox(height: 16),
-          Row(
+          const Row(
             children: [
               Icon(Icons.edit),
-              const SizedBox(width: 16),
+              SizedBox(width: 16),
               Flexible(
                 child: TextField(
                   maxLines: null,
@@ -32,15 +33,16 @@ class AddNewTask extends ConsumerWidget {
             ],
           ),
           const SizedBox(height: 30),
-          Align(
+          const Align(
             alignment: Alignment.centerLeft,
-            child: Text('ペナルティを設定しよう！', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+            child: Text('ペナルティを設定しよう！',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
           ),
           //const SizedBox(height: 16),
-          Row(
+          const Row(
             children: [
               Icon(Icons.edit),
-              const SizedBox(width: 16),
+              SizedBox(width: 16),
               Flexible(
                 child: TextField(
                   maxLines: null,
@@ -56,7 +58,7 @@ class AddNewTask extends ConsumerWidget {
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Text('設定する!'),
+            child: const Text('設定する!'),
           ),
         ],
       ),

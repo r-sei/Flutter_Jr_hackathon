@@ -13,8 +13,8 @@ class HomeFloatingActionButton extends ConsumerWidget {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           context: context,
-          builder: (context) => AddNewAchivement()),
-      child: Icon(Icons.add),
+          builder: (context) => const AddNewAchivement()),
+      child: const Icon(Icons.add),
     );
   }
 }

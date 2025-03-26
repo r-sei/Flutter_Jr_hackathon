@@ -14,9 +14,9 @@ Stream<QuerySnapshot<Map<String, dynamic>>> progress(Ref ref) {
   return snapshots;
 }
 
-//ペナルティ用のtextEditingController
+//進捗用のtextEditingController
 @riverpod
-TextEditingController penaltyController(Ref ref, Progress? progress) {
+TextEditingController progressController(Ref ref, Progress? progress) {
   return TextEditingController(text: progress?.progressTitle);
 }
 
