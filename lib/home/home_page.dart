@@ -83,4 +83,3 @@ class HomePage extends ConsumerWidget {
     );
   }
 }
-//each_heart for each_text
