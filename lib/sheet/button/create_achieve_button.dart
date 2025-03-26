@@ -6,22 +6,25 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class CreateAchieveButton extends ConsumerWidget {
   const CreateAchieveButton(
     this.progress,
-    this.achieveLevel, {
+    this.achieveLevel,
+    this.taskTitle, {
     super.key,
   });
 
   final Progress? progress;
   final double achieveLevel;
+  final String taskTitle;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ElevatedButton(
       onPressed: () async {
-        final title = ref.read(ProgressControllerProvider(progress)).text;
+        final progressTitle =
+            ref.read(ProgressControllerProvider(progress)).text;
 
         await ref
             .read(progressNotifierProvider.notifier)
-            .create(title, achieveLevel);
+            .create(taskTitle, progressTitle, achieveLevel);
         ref.read(ProgressControllerProvider(progress)).clear();
         Navigator.of(context).pop();
       },

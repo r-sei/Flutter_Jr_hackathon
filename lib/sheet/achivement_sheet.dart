@@ -26,6 +26,7 @@ class AddNewAchivement extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final valueSlider = ref.watch(sliderValueNotifierProvider);
+    final taskTitle = ref.watch(taskNameNotifierProvider);
 
     return Container(
       padding: const EdgeInsets.all(30),
@@ -95,7 +96,11 @@ class AddNewAchivement extends ConsumerWidget {
           //   },
           //   child: const Text('報告する!'),
           // ),
-          CreateAchieveButton(progress, valueSlider),
+          CreateAchieveButton(
+            progress,
+            valueSlider,
+            taskTitle,
+          ),
         ],
       ),
     );

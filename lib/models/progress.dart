@@ -8,6 +8,7 @@ abstract class Progress with _$Progress {
   const factory Progress({
     required String progressID,
     required String userName,
+    required String taskTitle,
     required String progressTitle,
     required double achieveLevel,
     required int likes,

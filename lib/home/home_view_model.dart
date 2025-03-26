@@ -28,11 +28,12 @@ class ProgressNotifier extends _$ProgressNotifier {
   }
 
   //進捗作成
-  Future<void> create(String title, double achieveLevel) async {
+  Future<void> create(String taskTitle, String progressTitle, double achieveLevel) async {
     final progress = Progress(
         progressID: const Uuid().v4(),
         userName: '',
-        progressTitle: title,
+        taskTitle: taskTitle,
+        progressTitle: progressTitle,
         achieveLevel: achieveLevel,
         isLiked: false,
         likes: 0);
