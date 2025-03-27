@@ -14,7 +14,8 @@ class HomeFloatingActionButton extends ConsumerWidget {
       onPressed: () => showModalBottomSheet(
           isScrollControlled: true,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          backgroundColor: Colors.grey[300],
           context: context,
           builder: (context) => AddNewAchivement()),
       child: Icon(Icons.add, color: col['text1']),
