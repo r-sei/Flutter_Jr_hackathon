@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_jr_hackathon/home/components/task_progress_post.dart';
 import 'package:flutter_jr_hackathon/home/home_floating_action_button.dart';
-import 'package:flutter_jr_hackathon/widget/appbar.dart';
 import 'package:flutter_jr_hackathon/home/home_view_model.dart';
 import 'package:flutter_jr_hackathon/models/progress.dart';
-
+import 'package:flutter_jr_hackathon/widget/appbar.dart';
+import 'package:flutter_jr_hackathon/widget/side_menu.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
@@ -30,7 +30,7 @@ class HomePage extends ConsumerWidget {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: MyAppBar(),
+      appBar: const MyAppBar(),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -46,6 +46,7 @@ class HomePage extends ConsumerWidget {
           ),
         ),
       ),
+      drawer: const SideMenu(),
       floatingActionButton: const HomeFloatingActionButton(),
     );
   }

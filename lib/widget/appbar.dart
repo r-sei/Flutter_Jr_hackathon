@@ -1,9 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_jr_hackathon/style/color.dart';
 import 'package:flutter_jr_hackathon/style/custom_shape.dart';
+import 'package:flutter_jr_hackathon/widget/profile_icon_button.dart';
 import 'package:flutter_jr_hackathon/widget/tab.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+
+//アカウントのモックデータ
+enum Account {
+  ryosei('ryosei', Colors.yellow),
+  kosei('kosei', Colors.green),
+  taipon('taipon', Colors.lightBlue),
+  wasapon('wasapon', Colors.orange),
+  yuta('yuta', Colors.red);
+
+  const Account(this.name, this.color);
+
+  final String name;
+  final Color color;
+}
 
 class MyAppBar extends ConsumerWidget implements PreferredSizeWidget {
   const MyAppBar({
@@ -25,6 +40,9 @@ class MyAppBar extends ConsumerWidget implements PreferredSizeWidget {
       elevation: 0,
       shadowColor: Colors.transparent,
       surfaceTintColor: Colors.transparent,
+      leading: ProfileIconButton(
+          color: Colors.grey,
+          onPressed: () => Scaffold.of(context).openDrawer()),
       flexibleSpace: Stack(children: [
         MyTab(
           hSize: hSize,
@@ -57,22 +75,21 @@ class MyAppBar extends ConsumerWidget implements PreferredSizeWidget {
                             width: wSize / 2 - 20,
                             child: Row(
                               children: [
-                                const Gap(16),
-                                CircleAvatar(
-                                  radius: 16,
-                                  backgroundColor: col['text1'],
-                                  child: const Icon(
-                                    Icons.person,
-                                    color: Colors.grey,
-                                  ),
-                                ),
-                                const Gap(8),
+                                const Gap(54),
+                                // const Gap(16),
+                                // todo:アカウントごとに色変更
+                                // ProfileIconButton(
+                                //     color: Colors.grey,
+                                //     onPressed: () =>
+                                //         Scaffold.of(context).openDrawer()),
+                                // const Gap(8),
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'PochiPochi',
+                                      //todo 現在のアカウントの名前に変更
+                                      'PochiPochi', 
                                       style: TextStyle(
                                         color: col['text1'],
                                         fontSize: 12,
