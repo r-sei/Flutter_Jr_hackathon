@@ -1,5 +1,15 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-final taskNameProvider = StateProvider<String?>((ref) {
-  return 'タスクを選択してください';
-});
+part 'task_name_provider.g.dart';
+
+@riverpod
+class TaskNameNotifier extends _$TaskNameNotifier {
+  @override
+  String build() {
+    return '';
+  }
+
+  void selectTask(String taskType) {
+    state = taskType;
+  }
+}

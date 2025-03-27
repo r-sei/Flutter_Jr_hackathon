@@ -24,7 +24,8 @@ final progressProvider =
 // ignore: unused_element
 typedef ProgressRef
     = AutoDisposeStreamProviderRef<QuerySnapshot<Map<String, dynamic>>>;
-String _$penaltyControllerHash() => r'cec35e83f0910a98ae5e456011397fa9e3d3d6ad';
+String _$progressControllerHash() =>
+    r'92952314b2f0a1f3f242c621627bdf6afa908db4';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -47,27 +48,27 @@ class _SystemHash {
   }
 }
 
-/// See also [penaltyController].
-@ProviderFor(penaltyController)
-const penaltyControllerProvider = PenaltyControllerFamily();
+/// See also [progressController].
+@ProviderFor(progressController)
+const progressControllerProvider = ProgressControllerFamily();
 
-/// See also [penaltyController].
-class PenaltyControllerFamily extends Family<TextEditingController> {
-  /// See also [penaltyController].
-  const PenaltyControllerFamily();
+/// See also [progressController].
+class ProgressControllerFamily extends Family<TextEditingController> {
+  /// See also [progressController].
+  const ProgressControllerFamily();
 
-  /// See also [penaltyController].
-  PenaltyControllerProvider call(
+  /// See also [progressController].
+  ProgressControllerProvider call(
     Progress? progress,
   ) {
-    return PenaltyControllerProvider(
+    return ProgressControllerProvider(
       progress,
     );
   }
 
   @override
-  PenaltyControllerProvider getProviderOverride(
-    covariant PenaltyControllerProvider provider,
+  ProgressControllerProvider getProviderOverride(
+    covariant ProgressControllerProvider provider,
   ) {
     return call(
       provider.progress,
@@ -86,33 +87,33 @@ class PenaltyControllerFamily extends Family<TextEditingController> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'penaltyControllerProvider';
+  String? get name => r'progressControllerProvider';
 }
 
-/// See also [penaltyController].
-class PenaltyControllerProvider
+/// See also [progressController].
+class ProgressControllerProvider
     extends AutoDisposeProvider<TextEditingController> {
-  /// See also [penaltyController].
-  PenaltyControllerProvider(
+  /// See also [progressController].
+  ProgressControllerProvider(
     Progress? progress,
   ) : this._internal(
-          (ref) => penaltyController(
-            ref as PenaltyControllerRef,
+          (ref) => progressController(
+            ref as ProgressControllerRef,
             progress,
           ),
-          from: penaltyControllerProvider,
-          name: r'penaltyControllerProvider',
+          from: progressControllerProvider,
+          name: r'progressControllerProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$penaltyControllerHash,
-          dependencies: PenaltyControllerFamily._dependencies,
+                  : _$progressControllerHash,
+          dependencies: ProgressControllerFamily._dependencies,
           allTransitiveDependencies:
-              PenaltyControllerFamily._allTransitiveDependencies,
+              ProgressControllerFamily._allTransitiveDependencies,
           progress: progress,
         );
 
-  PenaltyControllerProvider._internal(
+  ProgressControllerProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -126,12 +127,12 @@ class PenaltyControllerProvider
 
   @override
   Override overrideWith(
-    TextEditingController Function(PenaltyControllerRef provider) create,
+    TextEditingController Function(ProgressControllerRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
-      override: PenaltyControllerProvider._internal(
-        (ref) => create(ref as PenaltyControllerRef),
+      override: ProgressControllerProvider._internal(
+        (ref) => create(ref as ProgressControllerRef),
         from: from,
         name: null,
         dependencies: null,
@@ -144,12 +145,12 @@ class PenaltyControllerProvider
 
   @override
   AutoDisposeProviderElement<TextEditingController> createElement() {
-    return _PenaltyControllerProviderElement(this);
+    return _ProgressControllerProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is PenaltyControllerProvider && other.progress == progress;
+    return other is ProgressControllerProvider && other.progress == progress;
   }
 
   @override
@@ -163,21 +164,21 @@ class PenaltyControllerProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin PenaltyControllerRef on AutoDisposeProviderRef<TextEditingController> {
+mixin ProgressControllerRef on AutoDisposeProviderRef<TextEditingController> {
   /// The parameter `progress` of this provider.
   Progress? get progress;
 }
 
-class _PenaltyControllerProviderElement
+class _ProgressControllerProviderElement
     extends AutoDisposeProviderElement<TextEditingController>
-    with PenaltyControllerRef {
-  _PenaltyControllerProviderElement(super.provider);
+    with ProgressControllerRef {
+  _ProgressControllerProviderElement(super.provider);
 
   @override
-  Progress? get progress => (origin as PenaltyControllerProvider).progress;
+  Progress? get progress => (origin as ProgressControllerProvider).progress;
 }
 
-String _$progressNotifierHash() => r'f00985d1ec6f218f3f557c7b273fe5585b9b1fa2';
+String _$progressNotifierHash() => r'c5671817c11652d98b649e277d116c3214bb30a5';
 
 /// See also [ProgressNotifier].
 @ProviderFor(ProgressNotifier)

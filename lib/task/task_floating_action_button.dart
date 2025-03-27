@@ -6,13 +6,14 @@ class TaskFloatingActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(onPressed: () => showModalBottomSheet(
+    return FloatingActionButton(
+      onPressed: () => showModalBottomSheet(
           isScrollControlled: true,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           context: context,
-          builder: (context) => AddNewTask()),
-      child: Icon(Icons.add),
+          builder: (context) => const AddNewTask()),
+      child: const Icon(Icons.add),
     );
   }
 }

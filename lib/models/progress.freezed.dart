@@ -22,6 +22,7 @@ Progress _$ProgressFromJson(Map<String, dynamic> json) {
 mixin _$Progress {
   String get progressID => throw _privateConstructorUsedError;
   String get userName => throw _privateConstructorUsedError;
+  String get taskTitle => throw _privateConstructorUsedError;
   String get progressTitle => throw _privateConstructorUsedError;
   double get achieveLevel => throw _privateConstructorUsedError;
   int get likes => throw _privateConstructorUsedError;
@@ -45,6 +46,7 @@ abstract class $ProgressCopyWith<$Res> {
   $Res call(
       {String progressID,
       String userName,
+      String taskTitle,
       String progressTitle,
       double achieveLevel,
       int likes,
@@ -68,6 +70,7 @@ class _$ProgressCopyWithImpl<$Res, $Val extends Progress>
   $Res call({
     Object? progressID = null,
     Object? userName = null,
+    Object? taskTitle = null,
     Object? progressTitle = null,
     Object? achieveLevel = null,
     Object? likes = null,
@@ -81,6 +84,10 @@ class _$ProgressCopyWithImpl<$Res, $Val extends Progress>
       userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
+              as String,
+      taskTitle: null == taskTitle
+          ? _value.taskTitle
+          : taskTitle // ignore: cast_nullable_to_non_nullable
               as String,
       progressTitle: null == progressTitle
           ? _value.progressTitle
@@ -113,6 +120,7 @@ abstract class _$$ProgressImplCopyWith<$Res>
   $Res call(
       {String progressID,
       String userName,
+      String taskTitle,
       String progressTitle,
       double achieveLevel,
       int likes,
@@ -134,6 +142,7 @@ class __$$ProgressImplCopyWithImpl<$Res>
   $Res call({
     Object? progressID = null,
     Object? userName = null,
+    Object? taskTitle = null,
     Object? progressTitle = null,
     Object? achieveLevel = null,
     Object? likes = null,
@@ -147,6 +156,10 @@ class __$$ProgressImplCopyWithImpl<$Res>
       userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
+              as String,
+      taskTitle: null == taskTitle
+          ? _value.taskTitle
+          : taskTitle // ignore: cast_nullable_to_non_nullable
               as String,
       progressTitle: null == progressTitle
           ? _value.progressTitle
@@ -174,6 +187,7 @@ class _$ProgressImpl implements _Progress {
   const _$ProgressImpl(
       {required this.progressID,
       required this.userName,
+      required this.taskTitle,
       required this.progressTitle,
       required this.achieveLevel,
       required this.likes,
@@ -187,6 +201,8 @@ class _$ProgressImpl implements _Progress {
   @override
   final String userName;
   @override
+  final String taskTitle;
+  @override
   final String progressTitle;
   @override
   final double achieveLevel;
@@ -197,7 +213,7 @@ class _$ProgressImpl implements _Progress {
 
   @override
   String toString() {
-    return 'Progress(progressID: $progressID, userName: $userName, progressTitle: $progressTitle, achieveLevel: $achieveLevel, likes: $likes, isLiked: $isLiked)';
+    return 'Progress(progressID: $progressID, userName: $userName, taskTitle: $taskTitle, progressTitle: $progressTitle, achieveLevel: $achieveLevel, likes: $likes, isLiked: $isLiked)';
   }
 
   @override
@@ -209,6 +225,8 @@ class _$ProgressImpl implements _Progress {
                 other.progressID == progressID) &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
+            (identical(other.taskTitle, taskTitle) ||
+                other.taskTitle == taskTitle) &&
             (identical(other.progressTitle, progressTitle) ||
                 other.progressTitle == progressTitle) &&
             (identical(other.achieveLevel, achieveLevel) ||
@@ -219,7 +237,7 @@ class _$ProgressImpl implements _Progress {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, progressID, userName,
+  int get hashCode => Object.hash(runtimeType, progressID, userName, taskTitle,
       progressTitle, achieveLevel, likes, isLiked);
 
   /// Create a copy of Progress
@@ -242,6 +260,7 @@ abstract class _Progress implements Progress {
   const factory _Progress(
       {required final String progressID,
       required final String userName,
+      required final String taskTitle,
       required final String progressTitle,
       required final double achieveLevel,
       required final int likes,
@@ -254,6 +273,8 @@ abstract class _Progress implements Progress {
   String get progressID;
   @override
   String get userName;
+  @override
+  String get taskTitle;
   @override
   String get progressTitle;
   @override
