@@ -4,7 +4,6 @@ import 'package:flutter_jr_hackathon/style/custom_shape.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
-
 class MyAppBar extends ConsumerWidget implements PreferredSizeWidget {
   const MyAppBar({
     super.key,
@@ -81,16 +80,16 @@ class MyAppBar extends ConsumerWidget implements PreferredSizeWidget {
                         children: [
                           SizedBox(
                             height: hSize - topMargin - 25,
-                            width: wSize/2 - 16,
+                            width: wSize / 2 - 20,
                             child: Row(
                               children: [
                                 const Gap(16),
                                 CircleAvatar(
                                   radius: 16,
-                                  backgroundColor: col['accent1'],
+                                  backgroundColor: col['text1'],
                                   child: const Icon(
                                     Icons.person,
-                                    color: Colors.white,
+                                    color: Colors.grey,
                                   ),
                                 ),
                                 const Gap(8),
@@ -118,7 +117,13 @@ class MyAppBar extends ConsumerWidget implements PreferredSizeWidget {
                               ],
                             ),
                           ),
-                          Image.asset('lib/souce/looks.png', width: 16, height: 16),
+                          Align(
+                              alignment: Alignment.topCenter,
+                              child: Image.asset(
+                                'assets/images/Frame 2.png',
+                                width: 40,
+                                height: 40,
+                              )),
                         ],
                       ),
                     ),

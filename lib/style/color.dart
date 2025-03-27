@@ -1,9 +1,9 @@
 import 'dart:ui';
 
 Map<String, Color> col = {
-  'text1': const Color(0xFFfcf3e3),
+  'text1': const Color.fromARGB(255, 247, 243, 236),
   'text2': const Color(0xFF013d5a),
-  'appbar': const Color(0xFF013d5a),
-  'accent1': const Color(0xFFf4a258),
-  'accent2': const Color(0xFF708c69),
+  'appbar': const Color.fromARGB(255, 116, 161, 183),
+  'accent1': const Color.fromARGB(255, 175, 137, 103),
+  'accent2': const Color.fromARGB(255, 120, 183, 104),
 };
