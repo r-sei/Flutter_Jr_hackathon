@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_jr_hackathon/home/components/good_button.dart';
+import 'package:flutter_jr_hackathon/models/progress.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class TaskProgressPost extends StatelessWidget {
-  const TaskProgressPost(
-      {super.key,
-      required this.useName,
-      required this.achievement,
-      required this.likesnumber,
-      required this.percentage});
-  final String useName;
-  final String achievement;
-  final String likesnumber;
-  final double percentage;
+  const TaskProgressPost({
+    super.key,
+    required this.progress,
+  });
+
+  final Progress progress;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +28,7 @@ class TaskProgressPost extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                useName,
+                progress.userName,
                 style: const TextStyle(
                   fontSize: 32,
                 ),
@@ -48,7 +45,7 @@ class TaskProgressPost extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                achievement,
+                progress.progressTitle,
                 style: const TextStyle(
                   fontSize: 32,
                 ),
@@ -71,9 +68,9 @@ class TaskProgressPost extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Row(
               children: [
-                const GoodButton(),
+                GoodButton(progress: progress),
                 Text(
-                  likesnumber,
+                  progress.likes.length.toString(),
                   style: const TextStyle(
                     fontSize: 20,
                   ),
@@ -83,12 +80,12 @@ class TaskProgressPost extends StatelessWidget {
                 LinearPercentIndicator(
                   width: 140.0,
                   lineHeight: 14.0,
-                  percent: percentage,
+                  percent: progress.achieveLevel,
                   backgroundColor: Colors.white,
                   progressColor: Colors.green,
                   leading: Row(
                     children: [
-                      Text('${percentage*100}'),
+                      Text('${progress.achieveLevel * 100}'),
                       const Text('%'),
                     ],
                   ),
