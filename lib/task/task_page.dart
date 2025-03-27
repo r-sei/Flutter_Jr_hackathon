@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_jr_hackathon/task/task_floating_action_button.dart';
 import 'package:flutter_jr_hackathon/task/task_list_widget.dart';
 import 'package:flutter_jr_hackathon/widget/appbar.dart';
+import 'package:flutter_jr_hackathon/widget/side_menu.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
@@ -30,26 +31,28 @@ class TaskPage extends ConsumerWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: Column(children: [
-            const Gap(20),
-            Text(
-              getWeekRange(),
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+          child: Column(
+            children: [
+              const Gap(20),
+              Text(
+                getWeekRange(),
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              ),
-            const Gap(20),
-            ListView.builder(
-              itemCount: 5,
-              shrinkWrap: true,
-              itemBuilder: (context, index) =>
-                const TaskListWidget(),
-            )
-          ],),
+              const Gap(20),
+              ListView.builder(
+                itemCount: 5,
+                shrinkWrap: true,
+                itemBuilder: (context, index) => const TaskListWidget(),
+              )
+            ],
           ),
+        ),
       ),
-      appBar: MyAppBar(),
+      drawer: const SideMenu(),
+      appBar: const MyAppBar(),
       floatingActionButton: const TaskFloatingActionButton(),
     );
   }

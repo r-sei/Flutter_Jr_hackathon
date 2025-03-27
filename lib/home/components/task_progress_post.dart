@@ -10,7 +10,7 @@ class TaskProgressPost extends StatelessWidget {
   });
 
   final Progress progress;
-
+  //todo: 現在選択されているアカウントに応じたtileのUIに変更（いいねボタンとか特に）
   @override
   Widget build(BuildContext context) {
     return Container(
