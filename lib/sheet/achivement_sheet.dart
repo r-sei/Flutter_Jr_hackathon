@@ -5,6 +5,7 @@ import 'package:flutter_jr_hackathon/sheet/button/create_achieve_button.dart';
 import 'package:flutter_jr_hackathon/sheet/slider_value_provider.dart';
 import 'package:flutter_jr_hackathon/sheet/task_name_provider.dart';
 import 'package:flutter_jr_hackathon/style/color.dart';
+import 'package:flutter_jr_hackathon/style/color.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 // タスクのリストのモックデータ
