@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_jr_hackathon/main/bottom_navigation_provider.dart';
 import 'package:flutter_jr_hackathon/style/color.dart';
 import 'package:flutter_jr_hackathon/style/custom_shape.dart';
+import 'package:flutter_jr_hackathon/widget/tab.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
@@ -19,7 +19,6 @@ class MyAppBar extends ConsumerWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final page = ref.watch(bottomNavigationNotifierProvider);
     double wSize = MediaQuery.of(context).size.width;
     double margin = 5;
     return AppBar(
@@ -27,39 +26,12 @@ class MyAppBar extends ConsumerWidget implements PreferredSizeWidget {
       shadowColor: Colors.transparent,
       surfaceTintColor: Colors.transparent,
       flexibleSpace: Stack(children: [
-        CustomPaint(
-          painter: BoxShadowPainter2(),
-          child: ClipPath(
-            clipper: CustomShape2(),
-            child: Container(
-              height: hSize,
-              width: wSize,
-              color: col['accent2'],
-              child: Column(
-                children: [
-                  Gap(topMargin + margin + 3),
-                  Row(
-                    children: [
-                      SizedBox(width: wSize - tab + 1 + margin),
-                      SizedBox(
-                        width: tab - 1 - 2 * margin,
-                        height: hSize - 50 - 2 * margin,
-                        child: FittedBox(
-                          child: Text(
-                            'タイム\nライン',
-                            style: TextStyle(
-                              color: col['text1'],
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ),
+        MyTab(
+          hSize: hSize,
+          wSize: wSize,
+          tab: tab,
+          margin: margin,
+          topMargin: topMargin,
         ),
         CustomPaint(
           painter: BoxShadowPainter(),
