@@ -107,58 +107,60 @@ class AddNewAchivement extends ConsumerWidget {
                 )
               ]),
               const SizedBox(width: 16),
-              Container(
-                width: MediaQuery.of(context).size.width - 60 - 16 - 24,
-                padding: const EdgeInsets.fromLTRB(5, 15, 5, 0),
-                decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey[500]!,
-                      blurRadius: 10,
-                      offset: const Offset(5, 5),
-                    ),
-                    const BoxShadow(
-                      color: Colors.white,
-                      blurRadius: 15,
-                      offset: Offset(-5, -5),
-                    ),
-                  ],
-                ),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      child: Text(
-                        '進捗率$valueSlider%',
-                        style: const TextStyle(/*shadows: [
-                          Shadow(
-                            blurRadius: 2,
-                            color: Color.fromARGB(255, 92, 92, 92),
-                            offset: Offset(1.5, 1.5),
-                          ),
-                          Shadow(
-                            blurRadius: 2,
-                            color: Colors.white,
-                            offset: Offset(-1.5, -1.5),
-                          )
-                        ]*/),
-                        textAlign: TextAlign.right,
+              Flexible(
+                child: Container(
+                  width: MediaQuery.of(context).size.width - 60 - 16 - 24,
+                  padding: const EdgeInsets.fromLTRB(5, 15, 5, 0),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey[500]!,
+                        blurRadius: 10,
+                        offset: const Offset(5, 5),
                       ),
-                    ),
-                    Slider(
-                      label: '$valueSlider%',
-                      min: 0,
-                      max: 100,
-                      activeColor: col['accent2'],
-                      inactiveColor: col['appbar'],
-                      divisions: 4,
-                      onChanged: (value) => ref
-                          .read(sliderValueNotifierProvider.notifier)
-                          .update(value),
-                      value: valueSlider,
-                    ),
-                  ],
+                      const BoxShadow(
+                        color: Colors.white,
+                        blurRadius: 15,
+                        offset: Offset(-5, -5),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        child: Text(
+                          '進捗率$valueSlider%',
+                          style: const TextStyle(/*shadows: [
+                            Shadow(
+                              blurRadius: 2,
+                              color: Color.fromARGB(255, 92, 92, 92),
+                              offset: Offset(1.5, 1.5),
+                            ),
+                            Shadow(
+                              blurRadius: 2,
+                              color: Colors.white,
+                              offset: Offset(-1.5, -1.5),
+                            )
+                          ]*/),
+                          textAlign: TextAlign.right,
+                        ),
+                      ),
+                      Slider(
+                        label: '$valueSlider%',
+                        min: 0,
+                        max: 100,
+                        activeColor: col['accent2'],
+                        inactiveColor: col['appbar'],
+                        divisions: 4,
+                        onChanged: (value) => ref
+                            .read(sliderValueNotifierProvider.notifier)
+                            .update(value),
+                        value: valueSlider,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
