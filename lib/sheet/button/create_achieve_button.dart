@@ -46,12 +46,12 @@ class CreateAchieveButton extends ConsumerWidget {
               shadows: [
                 Shadow(
                   blurRadius: 4,
-                  color: Color.fromARGB(255, 181, 181, 181),
+                  color: Colors.white,
                   offset: Offset(1.5, 1.5),
                 ),
                 Shadow(
                   blurRadius: 3,
-                  color: Colors.white,
+                  color: Color.fromARGB(255, 181, 181, 181),
                   offset: Offset(-1.5, -1.5),
                 ),
               ])),
