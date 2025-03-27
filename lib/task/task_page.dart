@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_jr_hackathon/task/task_floating_action_button.dart';
 import 'package:flutter_jr_hackathon/task/task_list_widget.dart';
+import 'package:flutter_jr_hackathon/widget/appbar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
@@ -26,9 +27,6 @@ class TaskPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Task page'),
-      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -51,6 +49,7 @@ class TaskPage extends ConsumerWidget {
           ],),
           ),
       ),
+      appBar: MyAppBar(),
       floatingActionButton: const TaskFloatingActionButton(),
     );
   }
