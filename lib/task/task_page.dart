@@ -5,8 +5,6 @@ import 'package:flutter_jr_hackathon/widget/account_notifier.dart';
 import 'package:flutter_jr_hackathon/widget/appbar.dart';
 import 'package:flutter_jr_hackathon/widget/side_menu.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gap/gap.dart';
-import 'package:intl/intl.dart';
 
 class TaskPage extends ConsumerWidget {
   const TaskPage({
