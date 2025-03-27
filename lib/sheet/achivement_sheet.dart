@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_jr_hackathon/home/home_view_model.dart';
+import 'package:flutter_jr_hackathon/models/progress.dart';
+import 'package:flutter_jr_hackathon/sheet/button/create_achieve_button.dart';
 import 'package:flutter_jr_hackathon/sheet/slider_value_provider.dart';
 import 'package:flutter_jr_hackathon/sheet/task_name_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,17 +16,23 @@ final List<String> task = [
 ];
 
 class AddNewAchivement extends ConsumerWidget {
-  const AddNewAchivement({super.key});
+  const AddNewAchivement({
+    super.key,
+    this.progress,
+  });
+
+  final Progress? progress;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final taskName = ref.watch(taskNameProvider);
-    final valueSlider = ref.watch(sliderValueProvider);
+    final valueSlider = ref.watch(sliderValueNotifierProvider);
+    final taskTitle = ref.watch(taskNameNotifierProvider);
+
     return Container(
       padding: const EdgeInsets.all(30),
       child: Column(
         children: [
-          Text('進捗を報告しよう！',
+          const Text('進捗を報告しよう！',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           const SizedBox(height: 30),
           DropdownMenu(
@@ -31,28 +40,34 @@ class AddNewAchivement extends ConsumerWidget {
                 .map((task) => DropdownMenuEntry(value: task, label: task))
                 .toList(),
             width: 500,
-            label: Text("このタスク、進めました！"),
+            label: const Text("このタスク、進めました！"),
             helperText: "タスクを選択してください",
-            onSelected: (value) => ref.read(taskNameProvider.notifier).update((state)=> value),
+            onSelected: (value) =>
+                ref.read(taskNameNotifierProvider.notifier).selectTask(value!),
           ),
           const SizedBox(height: 16),
           Row(
             children: [
-              Icon(Icons.directions_run),
-              Container(
+              const Icon(Icons.directions_run),
+              SizedBox(
                 width: 120,
-                child: Text('進捗率${valueSlider}%', style: TextStyle(fontSize: 16),textAlign: TextAlign.right,),
+                child: Text(
+                  '進捗率$valueSlider%',
+                  style: const TextStyle(fontSize: 16),
+                  textAlign: TextAlign.right,
+                ),
               ),
-              
               Expanded(
                 child: Slider(
-                  label: '${valueSlider}%',
+                  label: '$valueSlider%',
                   min: 0,
                   max: 100,
                   /*activeColor: Colors.orange,
                   inactiveColor: Colors.blueAccent,*/
                   divisions: 4,
-                  onChanged: (value) => ref.read(sliderValueProvider.notifier).update((state) => value),
+                  onChanged: (value) => ref
+                      .read(sliderValueNotifierProvider.notifier)
+                      .update(value),
                   value: valueSlider,
                 ),
               ),
@@ -61,24 +76,24 @@ class AddNewAchivement extends ConsumerWidget {
           const SizedBox(height: 16),
           Row(
             children: [
-              Icon(Icons.comment),
+              const Icon(Icons.comment),
               const SizedBox(width: 16),
               Flexible(
                 child: TextField(
                   maxLines: null,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: '何をした?',
                   ),
+                  controller: ref.watch(progressControllerProvider(progress)),
                 ),
               ),
             ],
           ),
           const SizedBox(height: 30),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: Text('報告する!'),
+          CreateAchieveButton(
+            progress,
+            valueSlider,
+            taskTitle,
           ),
         ],
       ),

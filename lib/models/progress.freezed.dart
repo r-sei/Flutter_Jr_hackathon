@@ -22,10 +22,10 @@ Progress _$ProgressFromJson(Map<String, dynamic> json) {
 mixin _$Progress {
   String get progressID => throw _privateConstructorUsedError;
   String get userName => throw _privateConstructorUsedError;
+  String get taskTitle => throw _privateConstructorUsedError;
   String get progressTitle => throw _privateConstructorUsedError;
   double get achieveLevel => throw _privateConstructorUsedError;
-  int get likes => throw _privateConstructorUsedError;
-  bool get isLiked => throw _privateConstructorUsedError;
+  List<String> get likes => throw _privateConstructorUsedError;
 
   /// Serializes this Progress to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,10 +45,10 @@ abstract class $ProgressCopyWith<$Res> {
   $Res call(
       {String progressID,
       String userName,
+      String taskTitle,
       String progressTitle,
       double achieveLevel,
-      int likes,
-      bool isLiked});
+      List<String> likes});
 }
 
 /// @nodoc
@@ -68,10 +68,10 @@ class _$ProgressCopyWithImpl<$Res, $Val extends Progress>
   $Res call({
     Object? progressID = null,
     Object? userName = null,
+    Object? taskTitle = null,
     Object? progressTitle = null,
     Object? achieveLevel = null,
     Object? likes = null,
-    Object? isLiked = null,
   }) {
     return _then(_value.copyWith(
       progressID: null == progressID
@@ -81,6 +81,10 @@ class _$ProgressCopyWithImpl<$Res, $Val extends Progress>
       userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
+              as String,
+      taskTitle: null == taskTitle
+          ? _value.taskTitle
+          : taskTitle // ignore: cast_nullable_to_non_nullable
               as String,
       progressTitle: null == progressTitle
           ? _value.progressTitle
@@ -93,11 +97,7 @@ class _$ProgressCopyWithImpl<$Res, $Val extends Progress>
       likes: null == likes
           ? _value.likes
           : likes // ignore: cast_nullable_to_non_nullable
-              as int,
-      isLiked: null == isLiked
-          ? _value.isLiked
-          : isLiked // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as List<String>,
     ) as $Val);
   }
 }
@@ -113,10 +113,10 @@ abstract class _$$ProgressImplCopyWith<$Res>
   $Res call(
       {String progressID,
       String userName,
+      String taskTitle,
       String progressTitle,
       double achieveLevel,
-      int likes,
-      bool isLiked});
+      List<String> likes});
 }
 
 /// @nodoc
@@ -134,10 +134,10 @@ class __$$ProgressImplCopyWithImpl<$Res>
   $Res call({
     Object? progressID = null,
     Object? userName = null,
+    Object? taskTitle = null,
     Object? progressTitle = null,
     Object? achieveLevel = null,
     Object? likes = null,
-    Object? isLiked = null,
   }) {
     return _then(_$ProgressImpl(
       progressID: null == progressID
@@ -148,6 +148,10 @@ class __$$ProgressImplCopyWithImpl<$Res>
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
               as String,
+      taskTitle: null == taskTitle
+          ? _value.taskTitle
+          : taskTitle // ignore: cast_nullable_to_non_nullable
+              as String,
       progressTitle: null == progressTitle
           ? _value.progressTitle
           : progressTitle // ignore: cast_nullable_to_non_nullable
@@ -157,13 +161,9 @@ class __$$ProgressImplCopyWithImpl<$Res>
           : achieveLevel // ignore: cast_nullable_to_non_nullable
               as double,
       likes: null == likes
-          ? _value.likes
+          ? _value._likes
           : likes // ignore: cast_nullable_to_non_nullable
-              as int,
-      isLiked: null == isLiked
-          ? _value.isLiked
-          : isLiked // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as List<String>,
     ));
   }
 }
@@ -174,10 +174,11 @@ class _$ProgressImpl implements _Progress {
   const _$ProgressImpl(
       {required this.progressID,
       required this.userName,
+      required this.taskTitle,
       required this.progressTitle,
       required this.achieveLevel,
-      required this.likes,
-      required this.isLiked});
+      required final List<String> likes})
+      : _likes = likes;
 
   factory _$ProgressImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProgressImplFromJson(json);
@@ -187,17 +188,22 @@ class _$ProgressImpl implements _Progress {
   @override
   final String userName;
   @override
+  final String taskTitle;
+  @override
   final String progressTitle;
   @override
   final double achieveLevel;
+  final List<String> _likes;
   @override
-  final int likes;
-  @override
-  final bool isLiked;
+  List<String> get likes {
+    if (_likes is EqualUnmodifiableListView) return _likes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_likes);
+  }
 
   @override
   String toString() {
-    return 'Progress(progressID: $progressID, userName: $userName, progressTitle: $progressTitle, achieveLevel: $achieveLevel, likes: $likes, isLiked: $isLiked)';
+    return 'Progress(progressID: $progressID, userName: $userName, taskTitle: $taskTitle, progressTitle: $progressTitle, achieveLevel: $achieveLevel, likes: $likes)';
   }
 
   @override
@@ -209,18 +215,19 @@ class _$ProgressImpl implements _Progress {
                 other.progressID == progressID) &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
+            (identical(other.taskTitle, taskTitle) ||
+                other.taskTitle == taskTitle) &&
             (identical(other.progressTitle, progressTitle) ||
                 other.progressTitle == progressTitle) &&
             (identical(other.achieveLevel, achieveLevel) ||
                 other.achieveLevel == achieveLevel) &&
-            (identical(other.likes, likes) || other.likes == likes) &&
-            (identical(other.isLiked, isLiked) || other.isLiked == isLiked));
+            const DeepCollectionEquality().equals(other._likes, _likes));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, progressID, userName,
-      progressTitle, achieveLevel, likes, isLiked);
+  int get hashCode => Object.hash(runtimeType, progressID, userName, taskTitle,
+      progressTitle, achieveLevel, const DeepCollectionEquality().hash(_likes));
 
   /// Create a copy of Progress
   /// with the given fields replaced by the non-null parameter values.
@@ -242,10 +249,10 @@ abstract class _Progress implements Progress {
   const factory _Progress(
       {required final String progressID,
       required final String userName,
+      required final String taskTitle,
       required final String progressTitle,
       required final double achieveLevel,
-      required final int likes,
-      required final bool isLiked}) = _$ProgressImpl;
+      required final List<String> likes}) = _$ProgressImpl;
 
   factory _Progress.fromJson(Map<String, dynamic> json) =
       _$ProgressImpl.fromJson;
@@ -255,13 +262,13 @@ abstract class _Progress implements Progress {
   @override
   String get userName;
   @override
+  String get taskTitle;
+  @override
   String get progressTitle;
   @override
   double get achieveLevel;
   @override
-  int get likes;
-  @override
-  bool get isLiked;
+  List<String> get likes;
 
   /// Create a copy of Progress
   /// with the given fields replaced by the non-null parameter values.
