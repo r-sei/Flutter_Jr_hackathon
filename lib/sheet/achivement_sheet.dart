@@ -90,12 +90,6 @@ class AddNewAchivement extends ConsumerWidget {
             ],
           ),
           const SizedBox(height: 30),
-          // ElevatedButton(
-          //   onPressed: () {
-          //     Navigator.of(context).pop();
-          //   },
-          //   child: const Text('報告する!'),
-          // ),
           CreateAchieveButton(
             progress,
             valueSlider,

@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_jr_hackathon/models/task.dart';
+import 'package:flutter_jr_hackathon/sheet/button/create_task_button.dart';
+import 'package:flutter_jr_hackathon/task/task_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AddNewTask extends ConsumerWidget {
-  const AddNewTask({super.key});
+  const AddNewTask({super.key, this.task});
+
+  final Task? task;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -18,16 +23,17 @@ class AddNewTask extends ConsumerWidget {
               child: Text('タスクを追加しよう！',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold))),
           //const SizedBox(height: 16),
-          const Row(
+          Row(
             children: [
-              Icon(Icons.edit),
-              SizedBox(width: 16),
+              const Icon(Icons.edit),
+              const SizedBox(width: 16),
               Flexible(
                 child: TextField(
                   maxLines: null,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: '何をしたい?',
                   ),
+                  controller: ref.watch(titleControllerProvider(task)),
                 ),
               ),
             ],
@@ -39,27 +45,23 @@ class AddNewTask extends ConsumerWidget {
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
           ),
           //const SizedBox(height: 16),
-          const Row(
+          Row(
             children: [
-              Icon(Icons.edit),
-              SizedBox(width: 16),
+              const Icon(Icons.edit),
+              const SizedBox(width: 16),
               Flexible(
                 child: TextField(
                   maxLines: null,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: '達成できなかったらどうする?',
                   ),
+                  controller: ref.watch(penaltyControllerProvider(task)),
                 ),
               ),
             ],
           ),
           const SizedBox(height: 30),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: const Text('設定する!'),
-          ),
+          CreateTaskButton(task),
         ],
       ),
     );

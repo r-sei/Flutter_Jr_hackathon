@@ -24,7 +24,8 @@ class CreateAchieveButton extends ConsumerWidget {
 
         await ref
             .read(progressNotifierProvider.notifier)
-            .create(taskTitle, progressTitle, achieveLevel);
+            .create(taskTitle, progressTitle, achieveLevel / 100);
+
         ref.read(ProgressControllerProvider(progress)).clear();
         Navigator.of(context).pop();
       },
