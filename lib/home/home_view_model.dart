@@ -14,7 +14,7 @@ Stream<QuerySnapshot<Map<String, dynamic>>> progress(Ref ref) {
   return snapshots;
 }
 
-//進捗用のtextEditingController
+// 進捗用のtextEditingController
 @riverpod
 TextEditingController progressController(Ref ref, Progress? progress) {
   return TextEditingController(text: progress?.progressTitle);
@@ -27,20 +27,45 @@ class ProgressNotifier extends _$ProgressNotifier {
     return '';
   }
 
-  //進捗作成
-  Future<void> create(String taskTitle, String progressTitle, double achieveLevel) async {
+  // 進捗作成
+  Future<void> create(
+      String taskTitle, String progressTitle, double achieveLevel) async {
     final progress = Progress(
         progressID: const Uuid().v4(),
         userName: '',
         taskTitle: taskTitle,
         progressTitle: progressTitle,
         achieveLevel: achieveLevel,
-        isLiked: false,
-        likes: 0);
+        likes: []);
 
     await ref
         .read(homeCollectionProvider)
         .doc(progress.progressID)
         .set(progress.toJson());
+  }
+}
+
+// いいね用
+@riverpod
+class LikesNotifier extends _$LikesNotifier {
+  @override
+  String build() {
+    return '';
+  }
+
+  // todo
+  // 最後の引数用修正
+  Future<void> add(Progress progress) async {
+    await ref.read(homeCollectionProvider).doc(progress.progressID).update({
+      'likes': FieldValue.arrayUnion([progress.userName]),
+    });
+  }
+
+  // todo
+  // 最後の引数用修正
+  Future<void> delete(Progress progress) async {
+    await ref.read(homeCollectionProvider).doc(progress.progressID).update({
+      'likes': FieldValue.arrayRemove([progress.userName]),
+    });
   }
 }

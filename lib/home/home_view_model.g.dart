@@ -178,7 +178,7 @@ class _ProgressControllerProviderElement
   Progress? get progress => (origin as ProgressControllerProvider).progress;
 }
 
-String _$progressNotifierHash() => r'c5671817c11652d98b649e277d116c3214bb30a5';
+String _$progressNotifierHash() => r'd28737b8a66d3c81ad5adeeb2dd4d09387647501';
 
 /// See also [ProgressNotifier].
 @ProviderFor(ProgressNotifier)
@@ -194,5 +194,21 @@ final progressNotifierProvider =
 );
 
 typedef _$ProgressNotifier = AutoDisposeNotifier<String>;
+String _$likesNotifierHash() => r'49032e02f9b4c7fe535ea7287e394d8c6e0f863b';
+
+/// See also [LikesNotifier].
+@ProviderFor(LikesNotifier)
+final likesNotifierProvider =
+    AutoDisposeNotifierProvider<LikesNotifier, String>.internal(
+  LikesNotifier.new,
+  name: r'likesNotifierProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$likesNotifierHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$LikesNotifier = AutoDisposeNotifier<String>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

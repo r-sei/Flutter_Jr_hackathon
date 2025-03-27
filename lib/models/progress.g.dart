@@ -13,8 +13,7 @@ _$ProgressImpl _$$ProgressImplFromJson(Map<String, dynamic> json) =>
       taskTitle: json['taskTitle'] as String,
       progressTitle: json['progressTitle'] as String,
       achieveLevel: (json['achieveLevel'] as num).toDouble(),
-      likes: (json['likes'] as num).toInt(),
-      isLiked: json['isLiked'] as bool,
+      likes: (json['likes'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$$ProgressImplToJson(_$ProgressImpl instance) =>
@@ -25,5 +24,4 @@ Map<String, dynamic> _$$ProgressImplToJson(_$ProgressImpl instance) =>
       'progressTitle': instance.progressTitle,
       'achieveLevel': instance.achieveLevel,
       'likes': instance.likes,
-      'isLiked': instance.isLiked,
     };
