@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_jr_hackathon/widget/account_notifier.dart';
 import 'package:flutter_jr_hackathon/widget/appbar.dart';
 import 'package:flutter_jr_hackathon/widget/profile_icon_button.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -11,6 +12,9 @@ class SideMenu extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // todo: 選択中のアカウントはlistTileの色変えたい
+    // final currentAccount = ref.watch(accountManagementProvider);
+
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -25,7 +29,10 @@ class SideMenu extends ConsumerWidget {
               leading: ProfileIconButton(color: account.color, onPressed: null),
               title: Text(account.name),
               // todo タップ時にアカウントを切り替え
-              onTap: () {},
+              onTap: () {
+                ref.read(accountManagementProvider.notifier).change(account);
+                Navigator.pop(context);
+              },
             ),
           },
         ],

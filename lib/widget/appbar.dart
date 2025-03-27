@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_jr_hackathon/style/color.dart';
 import 'package:flutter_jr_hackathon/style/custom_shape.dart';
+import 'package:flutter_jr_hackathon/widget/account_notifier.dart';
 import 'package:flutter_jr_hackathon/widget/profile_icon_button.dart';
 import 'package:flutter_jr_hackathon/widget/tab.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -36,12 +37,15 @@ class MyAppBar extends ConsumerWidget implements PreferredSizeWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     double wSize = MediaQuery.of(context).size.width;
     double margin = 5;
+    final account = ref.watch(accountManagementProvider);
+
     return AppBar(
       elevation: 0,
       shadowColor: Colors.transparent,
       surfaceTintColor: Colors.transparent,
+      //todo アカウントごとの色を反映
       leading: ProfileIconButton(
-          color: Colors.grey,
+          color: account.color,
           onPressed: () => Scaffold.of(context).openDrawer()),
       flexibleSpace: Stack(children: [
         MyTab(
@@ -77,7 +81,6 @@ class MyAppBar extends ConsumerWidget implements PreferredSizeWidget {
                               children: [
                                 const Gap(54),
                                 // const Gap(16),
-                                // todo:アカウントごとに色変更
                                 // ProfileIconButton(
                                 //     color: Colors.grey,
                                 //     onPressed: () =>
@@ -89,7 +92,7 @@ class MyAppBar extends ConsumerWidget implements PreferredSizeWidget {
                                   children: [
                                     Text(
                                       //todo 現在のアカウントの名前に変更
-                                      'PochiPochi', 
+                                      account.name, 
                                       style: TextStyle(
                                         color: col['text1'],
                                         fontSize: 12,
