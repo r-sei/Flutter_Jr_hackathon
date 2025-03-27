@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_jr_hackathon/home/components/task_progress_post.dart';
 import 'package:flutter_jr_hackathon/home/home_floating_action_button.dart';
+import 'package:flutter_jr_hackathon/widget/appbar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart'; 
 class HomePage extends ConsumerWidget {
@@ -11,9 +12,8 @@ class HomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('home appbar dayo'),
-      ),
+      extendBodyBehindAppBar: true,
+      appBar: MyAppBar(),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
