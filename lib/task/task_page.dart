@@ -33,7 +33,15 @@ class TaskPage extends ConsumerWidget {
 
     final List<Task> taskList = ref.watch(tasksProvider).when(
       data: (data) {
-        return data.docs.map((e) => Task.fromJson(e.data())).toList();
+        List<Task> tasks = data.docs.map((e) => Task.fromJson(e.data())).toList();
+
+        // createdAt で降順ソート (新しい順)
+        tasks.sort((a, b) => b.createdAt.compareTo(a.createdAt));
+
+        // createdAt で昇順ソート (古い順)
+        // tasks.sort((a, b) => a.createdAt.compareTo(b.createdAt));
+
+        return tasks;
       },
       error: (error, _) {
         return [];
@@ -56,9 +64,9 @@ class TaskPage extends ConsumerWidget {
             children: [
               const Gap(20),
               Text(
-                getWeekRange(),
+                '今週（${getWeekRange()}）のタスク',
                 style: const TextStyle(
-                  fontSize: 20,
+                  fontSize: 25,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -82,7 +90,7 @@ class TaskPage extends ConsumerWidget {
               //   }
               // )
               for(final task in taskList) ...[
-                TaskListWidget(task: task),
+                TaskListWidget(task: task, thisWeek: getWeekRange(),),
               ]
             ],
           ),

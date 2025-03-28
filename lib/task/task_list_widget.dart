@@ -4,23 +4,43 @@ import 'package:flutter_jr_hackathon/home/home_view_model.dart';
 import 'package:flutter_jr_hackathon/models/progress.dart';
 import 'package:flutter_jr_hackathon/models/task.dart';
 import 'package:flutter_jr_hackathon/task/ranking_score_widget.dart';
-import 'package:flutter_jr_hackathon/task/task_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:intl/intl.dart';
 
 class TaskListWidget extends ConsumerWidget {
   const TaskListWidget({
     super.key,
     required this.task,
+    required this.thisWeek,
   });
 
   final Task task;
+  final String thisWeek;
 
   // double getScore(Progress progress) {
   //   double score;
   //     progress.likes.length
   //   return score;
   // }
+
+  String getWeekMondayToSunday(DateTime dateTime) {
+    // 入力された日付がその週の何曜日かを取得
+    int weekday = dateTime.weekday;
+
+    // 月曜日の日付を計算 (weekday が 1 は月曜日)
+    DateTime monday = dateTime.subtract(Duration(days: weekday - 1));
+
+    // 日曜日の日付を計算 (weekday が 7 は日曜日)
+    DateTime sunday = dateTime.add(Duration(days: 7 - weekday));
+
+    // 月曜日と日曜日の日付を MM/DD 形式でフォーマット
+    String formattedMonday = DateFormat('MM/dd').format(monday);
+    String formattedSunday = DateFormat('MM/dd').format(sunday);
+
+    // 結果を "MM/DD - MM/DD" 形式で返す
+    return '$formattedMonday - $formattedSunday';
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -82,18 +102,34 @@ class TaskListWidget extends ConsumerWidget {
     // var sortedEntries = taskScores.entries.toList()..sort((a,b) => b.value.compareTo(a.value));
     // Map<String, double> sortedTaskScores = {for (var e in sortedEntries) e.key: e.value};
 
+    // タスクが該当する期間を取得
+    String term = getWeekMondayToSunday(task.createdAt);
+
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10),
       width: double.infinity,
       // height: 300,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: term == thisWeek ? Colors.white : Colors.grey.shade400,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: ExpandablePanel(
             header: Column(children: [
+              const Gap(5),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 8, 0, 0),
+                  child: Text(
+                    term,
+                    style: const TextStyle(
+                      fontSize: 12,
+                    ),
+                    ),
+                ),
+              ),
               const Gap(10),
               // ListTile(
               //   contentPadding: EdgeInsets.zero,
@@ -113,12 +149,15 @@ class TaskListWidget extends ConsumerWidget {
               Text(
                 task.taskTitle,
                 style: const TextStyle(
-                  fontSize: 20,
+                  fontSize: 25,
                   fontWeight: FontWeight.bold,
                 ),
                 ),
               Text(
                 task.penalty,
+                style: const TextStyle(
+                  fontSize: 16,
+                ),
               ),
               const Divider(
                 thickness: 2,
