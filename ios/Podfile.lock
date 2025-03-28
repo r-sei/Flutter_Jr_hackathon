@@ -97,9 +97,9 @@ CHECKOUT OPTIONS:
     :tag: 11.8.0
 
 SPEC CHECKSUMS:
-  cloud_firestore: 56e7bb3888f09698dc061d38d02d87d4fd80e2cb
+  cloud_firestore: e61acbf808607d2c88ee32b00cd3aec027b38b3c
   Firebase: d80354ed7f6df5f9aca55e9eb47cc4b634735eaf
-  firebase_core: ac395f994af4e28f6a38b59e05a88ca57abeb874
+  firebase_core: 8d552814f6c01ccde5d88939fced4ec26f2f5510
   FirebaseCore: 861681f012101000fba3c2a321ed00181d257591
   FirebaseCoreExtension: 3d3f2017a00d06e09ab4ebe065391b0bb642565e
   FirebaseCoreInternal: df24ce5af28864660ecbd13596fc8dd3a8c34629
