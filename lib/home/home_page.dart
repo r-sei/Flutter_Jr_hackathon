@@ -40,7 +40,7 @@ class HomePage extends ConsumerWidget {
                 TaskProgressPost(
                   progress: progress,
                 ),
-                const Gap(8),
+                const Gap(16),
               },
             ],
           ),
