@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_jr_hackathon/home/home_view_model.dart';
 import 'package:flutter_jr_hackathon/models/progress.dart';
 import 'package:flutter_jr_hackathon/style/color.dart';
-import 'package:flutter_jr_hackathon/style/color.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CreateAchieveButton extends ConsumerWidget {
