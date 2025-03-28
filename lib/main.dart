@@ -1,7 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_jr_hackathon/auth/auth_page.dart';
 import 'package:flutter_jr_hackathon/firebase_options.dart';
-import 'package:flutter_jr_hackathon/main/main_screen.dart';
+//import 'package:flutter_jr_hackathon/main/main_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() async {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MainScreen(),
+      home: LoginPage(),
       theme:ThemeData(
         scaffoldBackgroundColor: Colors.grey[300],
       ),

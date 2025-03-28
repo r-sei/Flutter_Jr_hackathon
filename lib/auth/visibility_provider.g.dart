@@ -1,26 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'account_notifier.dart';
+part of 'visibility_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$accountManagementHash() => r'e9b483d98825ab699bf67ec1382159e8a0e89f8c';
+String _$visibilityNotifierHash() =>
+    r'03e1b4a25cf6bdbf7a1180fcc5ec61736b1dd601';
 
-/// See also [AccountManagement].
-@ProviderFor(AccountManagement)
-final accountManagementProvider =
-    AutoDisposeNotifierProvider<AccountManagement, Account>.internal(
-  AccountManagement.new,
-  name: r'accountManagementProvider',
+/// See also [VisibilityNotifier].
+@ProviderFor(VisibilityNotifier)
+final visibilityNotifierProvider =
+    AutoDisposeNotifierProvider<VisibilityNotifier, bool>.internal(
+  VisibilityNotifier.new,
+  name: r'visibilityNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$accountManagementHash,
+      : _$visibilityNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$AccountManagement = AutoDisposeNotifier<Account>;
+typedef _$VisibilityNotifier = AutoDisposeNotifier<bool>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
