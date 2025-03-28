@@ -24,9 +24,6 @@ class TaskProgressPost extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 8),
-            child: Text(progress.taskTitle),
           Align(
             alignment: Alignment.centerLeft,
             child: Padding(
@@ -74,7 +71,7 @@ class TaskProgressPost extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 40),
-                const Text('達成率'),                      
+                const Text('達成率'),
                 Text('${progress.achieveLevel * 100}'),
                 const Text('%'),
                 Padding(
@@ -90,14 +87,12 @@ class TaskProgressPost extends StatelessWidget {
                       lineHeight: 14.0,
                       percent: progress.achieveLevel,
                       backgroundColor: Colors.white,
-                      progressColor: Colors.green, 
+                      progressColor: Colors.green,
                       barRadius: Radius.zero,
                       padding: EdgeInsets.zero,
                     ),
                   ),
                 ),
-                
-
               ],
             ),
           ),
