@@ -11,7 +11,10 @@ part 'home_view_model.g.dart';
 
 @riverpod
 Stream<QuerySnapshot<Map<String, dynamic>>> progress(Ref ref) {
-  final snapshots = ref.read(homeCollectionProvider).snapshots();
+  final snapshots = ref
+      .read(homeCollectionProvider)
+      .orderBy('createdAt', descending: true)
+      .snapshots();
   return snapshots;
 }
 

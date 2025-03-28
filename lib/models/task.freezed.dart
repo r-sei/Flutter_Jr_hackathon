@@ -29,7 +29,9 @@ mixin _$Task {
   String get groupName => throw _privateConstructorUsedError;
   double get score => throw _privateConstructorUsedError;
   int get likes => throw _privateConstructorUsedError;
+  @TimestampConverter()
   DateTime get createdAt => throw _privateConstructorUsedError;
+  @TimestampConverter()
   DateTime get updatedAt => throw _privateConstructorUsedError;
 
   /// Serializes this Task to a JSON map.
@@ -54,8 +56,8 @@ abstract class $TaskCopyWith<$Res> {
       String groupName,
       double score,
       int likes,
-      DateTime createdAt,
-      DateTime updatedAt});
+      @TimestampConverter() DateTime createdAt,
+      @TimestampConverter() DateTime updatedAt});
 }
 
 /// @nodoc
@@ -139,8 +141,8 @@ abstract class _$$TaskImplCopyWith<$Res> implements $TaskCopyWith<$Res> {
       String groupName,
       double score,
       int likes,
-      DateTime createdAt,
-      DateTime updatedAt});
+      @TimestampConverter() DateTime createdAt,
+      @TimestampConverter() DateTime updatedAt});
 }
 
 /// @nodoc
@@ -217,8 +219,8 @@ class _$TaskImpl implements _Task {
       required this.groupName,
       required this.score,
       required this.likes,
-      required this.createdAt,
-      required this.updatedAt});
+      @TimestampConverter() required this.createdAt,
+      @TimestampConverter() required this.updatedAt});
 
   factory _$TaskImpl.fromJson(Map<String, dynamic> json) =>
       _$$TaskImplFromJson(json);
@@ -240,8 +242,10 @@ class _$TaskImpl implements _Task {
   @override
   final int likes;
   @override
+  @TimestampConverter()
   final DateTime createdAt;
   @override
+  @TimestampConverter()
   final DateTime updatedAt;
 
   @override
@@ -300,8 +304,8 @@ abstract class _Task implements Task {
       required final String groupName,
       required final double score,
       required final int likes,
-      required final DateTime createdAt,
-      required final DateTime updatedAt}) = _$TaskImpl;
+      @TimestampConverter() required final DateTime createdAt,
+      @TimestampConverter() required final DateTime updatedAt}) = _$TaskImpl;
 
   factory _Task.fromJson(Map<String, dynamic> json) = _$TaskImpl.fromJson;
 
@@ -322,8 +326,10 @@ abstract class _Task implements Task {
   @override
   int get likes;
   @override
+  @TimestampConverter()
   DateTime get createdAt;
   @override
+  @TimestampConverter()
   DateTime get updatedAt;
 
   /// Create a copy of Task

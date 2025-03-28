@@ -15,7 +15,8 @@ _$ProgressImpl _$$ProgressImplFromJson(Map<String, dynamic> json) =>
       groupName: json['groupName'] as String,
       achieveLevel: (json['achieveLevel'] as num).toDouble(),
       likes: (json['likes'] as List<dynamic>).map((e) => e as String).toList(),
-      createdAt: DateTime.parse(json['createdAt'] as String),
+      createdAt:
+          const TimestampConverter().fromJson(json['createdAt'] as Timestamp),
     );
 
 Map<String, dynamic> _$$ProgressImplToJson(_$ProgressImpl instance) =>
@@ -27,5 +28,5 @@ Map<String, dynamic> _$$ProgressImplToJson(_$ProgressImpl instance) =>
       'groupName': instance.groupName,
       'achieveLevel': instance.achieveLevel,
       'likes': instance.likes,
-      'createdAt': instance.createdAt.toIso8601String(),
+      'createdAt': const TimestampConverter().toJson(instance.createdAt),
     };

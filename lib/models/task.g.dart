@@ -14,8 +14,10 @@ _$TaskImpl _$$TaskImplFromJson(Map<String, dynamic> json) => _$TaskImpl(
       groupName: json['groupName'] as String,
       score: (json['score'] as num).toDouble(),
       likes: (json['likes'] as num).toInt(),
-      createdAt: DateTime.parse(json['createdAt'] as String),
-      updatedAt: DateTime.parse(json['updatedAt'] as String),
+      createdAt:
+          const TimestampConverter().fromJson(json['createdAt'] as Timestamp),
+      updatedAt:
+          const TimestampConverter().fromJson(json['updatedAt'] as Timestamp),
     );
 
 Map<String, dynamic> _$$TaskImplToJson(_$TaskImpl instance) =>
@@ -27,6 +29,6 @@ Map<String, dynamic> _$$TaskImplToJson(_$TaskImpl instance) =>
       'groupName': instance.groupName,
       'score': instance.score,
       'likes': instance.likes,
-      'createdAt': instance.createdAt.toIso8601String(),
-      'updatedAt': instance.updatedAt.toIso8601String(),
+      'createdAt': const TimestampConverter().toJson(instance.createdAt),
+      'updatedAt': const TimestampConverter().toJson(instance.updatedAt),
     };
