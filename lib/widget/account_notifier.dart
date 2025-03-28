@@ -10,7 +10,6 @@ class AccountManagement extends _$AccountManagement {
     return Account.ryosei;
   }
 
-  //todo アカウント変更時の状態管理
   void change(Account account) {
     state = account;
   }

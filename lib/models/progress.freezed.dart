@@ -24,8 +24,10 @@ mixin _$Progress {
   String get userName => throw _privateConstructorUsedError;
   String get taskTitle => throw _privateConstructorUsedError;
   String get progressTitle => throw _privateConstructorUsedError;
+  String get groupName => throw _privateConstructorUsedError;
   double get achieveLevel => throw _privateConstructorUsedError;
   List<String> get likes => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
 
   /// Serializes this Progress to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -47,8 +49,10 @@ abstract class $ProgressCopyWith<$Res> {
       String userName,
       String taskTitle,
       String progressTitle,
+      String groupName,
       double achieveLevel,
-      List<String> likes});
+      List<String> likes,
+      DateTime createdAt});
 }
 
 /// @nodoc
@@ -70,8 +74,10 @@ class _$ProgressCopyWithImpl<$Res, $Val extends Progress>
     Object? userName = null,
     Object? taskTitle = null,
     Object? progressTitle = null,
+    Object? groupName = null,
     Object? achieveLevel = null,
     Object? likes = null,
+    Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
       progressID: null == progressID
@@ -90,6 +96,10 @@ class _$ProgressCopyWithImpl<$Res, $Val extends Progress>
           ? _value.progressTitle
           : progressTitle // ignore: cast_nullable_to_non_nullable
               as String,
+      groupName: null == groupName
+          ? _value.groupName
+          : groupName // ignore: cast_nullable_to_non_nullable
+              as String,
       achieveLevel: null == achieveLevel
           ? _value.achieveLevel
           : achieveLevel // ignore: cast_nullable_to_non_nullable
@@ -98,6 +108,10 @@ class _$ProgressCopyWithImpl<$Res, $Val extends Progress>
           ? _value.likes
           : likes // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ) as $Val);
   }
 }
@@ -115,8 +129,10 @@ abstract class _$$ProgressImplCopyWith<$Res>
       String userName,
       String taskTitle,
       String progressTitle,
+      String groupName,
       double achieveLevel,
-      List<String> likes});
+      List<String> likes,
+      DateTime createdAt});
 }
 
 /// @nodoc
@@ -136,8 +152,10 @@ class __$$ProgressImplCopyWithImpl<$Res>
     Object? userName = null,
     Object? taskTitle = null,
     Object? progressTitle = null,
+    Object? groupName = null,
     Object? achieveLevel = null,
     Object? likes = null,
+    Object? createdAt = null,
   }) {
     return _then(_$ProgressImpl(
       progressID: null == progressID
@@ -156,6 +174,10 @@ class __$$ProgressImplCopyWithImpl<$Res>
           ? _value.progressTitle
           : progressTitle // ignore: cast_nullable_to_non_nullable
               as String,
+      groupName: null == groupName
+          ? _value.groupName
+          : groupName // ignore: cast_nullable_to_non_nullable
+              as String,
       achieveLevel: null == achieveLevel
           ? _value.achieveLevel
           : achieveLevel // ignore: cast_nullable_to_non_nullable
@@ -164,6 +186,10 @@ class __$$ProgressImplCopyWithImpl<$Res>
           ? _value._likes
           : likes // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -176,8 +202,10 @@ class _$ProgressImpl implements _Progress {
       required this.userName,
       required this.taskTitle,
       required this.progressTitle,
+      required this.groupName,
       required this.achieveLevel,
-      required final List<String> likes})
+      required final List<String> likes,
+      required this.createdAt})
       : _likes = likes;
 
   factory _$ProgressImpl.fromJson(Map<String, dynamic> json) =>
@@ -192,6 +220,8 @@ class _$ProgressImpl implements _Progress {
   @override
   final String progressTitle;
   @override
+  final String groupName;
+  @override
   final double achieveLevel;
   final List<String> _likes;
   @override
@@ -202,8 +232,11 @@ class _$ProgressImpl implements _Progress {
   }
 
   @override
+  final DateTime createdAt;
+
+  @override
   String toString() {
-    return 'Progress(progressID: $progressID, userName: $userName, taskTitle: $taskTitle, progressTitle: $progressTitle, achieveLevel: $achieveLevel, likes: $likes)';
+    return 'Progress(progressID: $progressID, userName: $userName, taskTitle: $taskTitle, progressTitle: $progressTitle, groupName: $groupName, achieveLevel: $achieveLevel, likes: $likes, createdAt: $createdAt)';
   }
 
   @override
@@ -219,15 +252,27 @@ class _$ProgressImpl implements _Progress {
                 other.taskTitle == taskTitle) &&
             (identical(other.progressTitle, progressTitle) ||
                 other.progressTitle == progressTitle) &&
+            (identical(other.groupName, groupName) ||
+                other.groupName == groupName) &&
             (identical(other.achieveLevel, achieveLevel) ||
                 other.achieveLevel == achieveLevel) &&
-            const DeepCollectionEquality().equals(other._likes, _likes));
+            const DeepCollectionEquality().equals(other._likes, _likes) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, progressID, userName, taskTitle,
-      progressTitle, achieveLevel, const DeepCollectionEquality().hash(_likes));
+  int get hashCode => Object.hash(
+      runtimeType,
+      progressID,
+      userName,
+      taskTitle,
+      progressTitle,
+      groupName,
+      achieveLevel,
+      const DeepCollectionEquality().hash(_likes),
+      createdAt);
 
   /// Create a copy of Progress
   /// with the given fields replaced by the non-null parameter values.
@@ -251,8 +296,10 @@ abstract class _Progress implements Progress {
       required final String userName,
       required final String taskTitle,
       required final String progressTitle,
+      required final String groupName,
       required final double achieveLevel,
-      required final List<String> likes}) = _$ProgressImpl;
+      required final List<String> likes,
+      required final DateTime createdAt}) = _$ProgressImpl;
 
   factory _Progress.fromJson(Map<String, dynamic> json) =
       _$ProgressImpl.fromJson;
@@ -266,9 +313,13 @@ abstract class _Progress implements Progress {
   @override
   String get progressTitle;
   @override
+  String get groupName;
+  @override
   double get achieveLevel;
   @override
   List<String> get likes;
+  @override
+  DateTime get createdAt;
 
   /// Create a copy of Progress
   /// with the given fields replaced by the non-null parameter values.

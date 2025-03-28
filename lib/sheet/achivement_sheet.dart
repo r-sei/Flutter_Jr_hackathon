@@ -94,7 +94,8 @@ class AddNewAchivement extends ConsumerWidget {
               children: [
                 Gap(40),
                 Text('進捗率を報告しよう！',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+                    style:
+                        TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
               ],
             ),
           ),
@@ -191,7 +192,8 @@ class AddNewAchivement extends ConsumerWidget {
               children: [
                 Gap(40),
                 Text('取り組んだことを報告しよう！',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+                    style:
+                        TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
               ],
             ),
           ),
@@ -247,12 +249,11 @@ class AddNewAchivement extends ConsumerWidget {
                     cursorColor: col['accent2'],
                     maxLines: null,
                     decoration: InputDecoration(
-                      hintText: '何をした?',
-                      focusedBorder: UnderlineInputBorder(
+                        hintText: '何をした?',
+                        focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
                           color: col['accent2'] ?? Colors.black,
-                        ))
-                    ),
+                        ))),
                     controller: ref.watch(progressControllerProvider(progress)),
                   ),
                 ),

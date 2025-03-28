@@ -10,8 +10,10 @@ abstract class Progress with _$Progress {
     required String userName,
     required String taskTitle,
     required String progressTitle,
+    required String groupName,
     required double achieveLevel,
     required List<String> likes,
+    required DateTime createdAt,
   }) = _Progress;
 
 factory Progress.fromJson(Map<String, dynamic> json) => _$ProgressFromJson(json);

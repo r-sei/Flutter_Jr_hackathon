@@ -10,6 +10,7 @@ abstract class Task with _$Task {
     required String taskTitle,
     required String createdBy, /// タスクの作成者
     required String penalty,
+    required String groupName,
     required double score,
     required int likes,
     required DateTime createdAt,

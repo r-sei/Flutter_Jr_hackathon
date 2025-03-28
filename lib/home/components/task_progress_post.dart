@@ -24,6 +24,9 @@ class TaskProgressPost extends StatelessWidget {
       ),
       child: Column(
         children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Text(progress.taskTitle),
           Align(
             alignment: Alignment.centerLeft,
             child: Padding(
@@ -93,6 +96,8 @@ class TaskProgressPost extends StatelessWidget {
                     ),
                   ),
                 ),
+                
+
               ],
             ),
           ),
