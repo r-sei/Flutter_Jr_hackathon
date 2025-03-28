@@ -6,6 +6,7 @@ import 'package:flutter_jr_hackathon/sheet/slider_value_provider.dart';
 import 'package:flutter_jr_hackathon/sheet/task_name_provider.dart';
 import 'package:flutter_jr_hackathon/style/color.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 
 // タスクのリストのモックデータ
 final List<String> task = [
@@ -35,9 +36,9 @@ class AddNewAchivement extends ConsumerWidget {
         children: [
           const Text('進捗を報告しよう！',
               style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  /*shadows: [
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                /*shadows: [
                     Shadow(
                         blurRadius: 2,
                         color: Color.fromARGB(255, 92, 92, 92),
@@ -46,8 +47,13 @@ class AddNewAchivement extends ConsumerWidget {
                         blurRadius: 2,
                         color: Colors.white,
                         offset: Offset(-1.5, -1.5))
-                  ]*/)),
-          const SizedBox(height: 30),
+                  ]*/
+              )),
+          Divider(
+            color: Colors.grey[500],
+            thickness: 2,
+          ),
+          const SizedBox(height: 20),
           Container(
             width: MediaQuery.of(context).size.width - 60,
             //height: 57,
@@ -82,6 +88,17 @@ class AddNewAchivement extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 30),
+          const Align(
+            alignment: Alignment.centerLeft,
+            child: Row(
+              children: [
+                Gap(40),
+                Text('進捗率を報告しよう！',
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+              ],
+            ),
+          ),
+          const Gap(14),
           Row(
             children: [
               const Stack(children: [
@@ -132,7 +149,8 @@ class AddNewAchivement extends ConsumerWidget {
                       SizedBox(
                         child: Text(
                           '進捗率$valueSlider%',
-                          style: const TextStyle(/*shadows: [
+                          style: const TextStyle(
+                              /*shadows: [
                             Shadow(
                               blurRadius: 2,
                               color: Color.fromARGB(255, 92, 92, 92),
@@ -143,7 +161,8 @@ class AddNewAchivement extends ConsumerWidget {
                               color: Colors.white,
                               offset: Offset(-1.5, -1.5),
                             )
-                          ]*/),
+                          ]*/
+                              ),
                           textAlign: TextAlign.right,
                         ),
                       ),
@@ -166,6 +185,17 @@ class AddNewAchivement extends ConsumerWidget {
             ],
           ),
           const SizedBox(height: 30),
+          const Align(
+            alignment: Alignment.centerLeft,
+            child: Row(
+              children: [
+                Gap(40),
+                Text('取り組んだことを報告しよう！',
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+              ],
+            ),
+          ),
+          const Gap(14),
           Row(
             children: [
               const Stack(children: [
@@ -187,7 +217,10 @@ class AddNewAchivement extends ConsumerWidget {
                     size: 24,
                   ),
                 ),
-                Icon(Icons.comment, size: 24,),
+                Icon(
+                  Icons.comment,
+                  size: 24,
+                ),
               ]),
               const SizedBox(width: 16),
               Flexible(
@@ -211,9 +244,14 @@ class AddNewAchivement extends ConsumerWidget {
                     ],
                   ),
                   child: TextField(
+                    cursorColor: col['accent2'],
                     maxLines: null,
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       hintText: '何をした?',
+                      focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                          color: col['accent2'] ?? Colors.black,
+                        ))
                     ),
                     controller: ref.watch(progressControllerProvider(progress)),
                   ),

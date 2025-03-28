@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_jr_hackathon/main/bottom_navigation_provider.dart';
+import 'package:flutter_jr_hackathon/style/color.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MainBottomNavigationBar extends ConsumerWidget {
@@ -24,8 +25,8 @@ class MainBottomNavigationBar extends ConsumerWidget {
 
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
-      selectedItemColor: Colors.blue,
-      unselectedItemColor: Colors.grey,
+      selectedItemColor: col['appbar'],
+      unselectedItemColor: Colors.grey[400],
       selectedIconTheme: const IconThemeData(size: 32),
       unselectedIconTheme: const IconThemeData(size: 28),
       showSelectedLabels: false,
