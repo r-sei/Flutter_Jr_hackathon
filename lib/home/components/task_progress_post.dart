@@ -1,15 +1,17 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_jr_hackathon/home/components/good_button.dart';
 import 'package:flutter_jr_hackathon/models/progress.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class TaskProgressPost extends StatelessWidget {
-  const TaskProgressPost({
+  TaskProgressPost({
     super.key,
     required this.progress,
   });
 
   final Progress progress;
+  final oneWeekAgo = DateTime.now().subtract(const Duration(days: 7));
   //todo: 現在選択されているアカウントに応じたtileのUIに変更（いいねボタンとか特に）
   @override
   Widget build(BuildContext context) {
@@ -24,12 +26,25 @@ class TaskProgressPost extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(8, 8, 0, 0),
-              child: Text(progress.taskTitle),
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(8, 8, 0, 0),
+                child: Text(progress.taskTitle),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 8, 8, 0),
+                child: Text(
+                  '期限切れ',
+                  style: TextStyle(
+                    color: progress.createdAt.compareTo(oneWeekAgo) < 0
+                        ? Colors.red
+                        : Colors.white,
+                  ),
+                ),
+              ),
+            ],
           ),
           Row(
             mainAxisSize: MainAxisSize.min,
@@ -96,15 +111,14 @@ class TaskProgressPost extends StatelessWidget {
               ],
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.fromLTRB(0, 0, 8, 8),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 0, 8, 8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text('投稿日 '),
-                Text('YYYY/MM/DD'),
-                // Text(
-                //     '${progress.createdAt.year}/${progress.createdAt.month}/${progress.createdAt.day}'),
+                const Text('投稿日 '),
+                Text(
+                    '${progress.createdAt.year}/${progress.createdAt.month}/${progress.createdAt.day}'),
               ],
             ),
           ),
