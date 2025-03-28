@@ -41,6 +41,7 @@ class TaskEdit extends _$TaskEdit {
         taskTitle: title,
         createdBy: ref.watch(accountManagementProvider).name,
         penalty: penalty,
+        groupName: 'Friends',
         score: 0,
         likes: 0,
         createdAt: DateTime.now(),

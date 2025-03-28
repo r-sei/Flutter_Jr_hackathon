@@ -44,7 +44,7 @@ class CreateAchieveButton extends ConsumerWidget {
           style: TextStyle(
               color: col['accent2'],
               fontWeight: FontWeight.bold,
-              shadows: [
+              shadows: const [
                 Shadow(
                   blurRadius: 4,
                   color: Colors.white,

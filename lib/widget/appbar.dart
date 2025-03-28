@@ -44,7 +44,6 @@ class MyAppBar extends ConsumerWidget implements PreferredSizeWidget {
       elevation: 0,
       shadowColor: Colors.transparent,
       surfaceTintColor: Colors.transparent,
-      //todo アカウントごとの色を反映
       leading: ProfileIconButton(
           color: account.color,
           onPressed: () => Scaffold.of(context).openDrawer()),
@@ -81,18 +80,11 @@ class MyAppBar extends ConsumerWidget implements PreferredSizeWidget {
                             child: Row(
                               children: [
                                 const Gap(54),
-                                // const Gap(16),
-                                // ProfileIconButton(
-                                //     color: Colors.grey,
-                                //     onPressed: () =>
-                                //         Scaffold.of(context).openDrawer()),
-                                // const Gap(8),
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      //todo 現在のアカウントの名前に変更
                                       account.name,
                                       style: TextStyle(
                                         color: col['text1'],

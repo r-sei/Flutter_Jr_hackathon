@@ -309,7 +309,7 @@ class _PenaltyControllerProviderElement
   Task? get task => (origin as PenaltyControllerProvider).task;
 }
 
-String _$taskEditHash() => r'1534d4e928c9e84d421eca449a6e7abd5bbc8625';
+String _$taskEditHash() => r'05fa6ab5dfcaa03c64cd241b74104039bf46c835';
 
 /// See also [TaskEdit].
 @ProviderFor(TaskEdit)

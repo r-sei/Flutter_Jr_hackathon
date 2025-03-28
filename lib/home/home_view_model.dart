@@ -36,7 +36,9 @@ class ProgressNotifier extends _$ProgressNotifier {
         userName: ref.watch(accountManagementProvider).name,
         taskTitle: taskTitle,
         progressTitle: progressTitle,
+        groupName: 'Friends',
         achieveLevel: achieveLevel,
+        createdAt: DateTime.now(),
         likes: []);
 
     await ref
