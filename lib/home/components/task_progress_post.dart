@@ -139,7 +139,8 @@ class TaskProgressPost extends ConsumerWidget {
                   ),
                 ),
                 const SizedBox(width: 40),
-                const Text('進捗度:'),
+                // const Text('進捗度'),
+                const Icon(Icons.directions_run),
                 // Text('${progress.achieveLevel * 100}'),
                 // const Text('%'),
                 Padding(
