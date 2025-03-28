@@ -24,9 +24,12 @@ class TaskProgressPost extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 8),
-            child: Text(progress.taskTitle),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(8, 8, 0, 0),
+              child: Text(progress.taskTitle),
+            ),
           ),
           Row(
             mainAxisSize: MainAxisSize.min,
@@ -38,7 +41,7 @@ class TaskProgressPost extends StatelessWidget {
                 ),
               ),
               const Text(
-                'が',
+                'は',
                 style: TextStyle(
                   fontSize: 24,
                 ),
@@ -68,7 +71,7 @@ class TaskProgressPost extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 40),
-                const Text('達成率'),                      
+                const Text('達成率'),
                 Text('${progress.achieveLevel * 100}'),
                 const Text('%'),
                 Padding(
@@ -84,14 +87,24 @@ class TaskProgressPost extends StatelessWidget {
                       lineHeight: 14.0,
                       percent: progress.achieveLevel,
                       backgroundColor: Colors.white,
-                      progressColor: Colors.green, 
+                      progressColor: Colors.green,
                       barRadius: Radius.zero,
                       padding: EdgeInsets.zero,
                     ),
                   ),
                 ),
-                
-
+              ],
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(0, 0, 8, 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text('投稿日 '),
+                Text('YYYY/MM/DD'),
+                // Text(
+                //     '${progress.createdAt.year}/${progress.createdAt.month}/${progress.createdAt.day}'),
               ],
             ),
           ),

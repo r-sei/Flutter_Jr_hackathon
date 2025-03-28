@@ -8,15 +8,6 @@ import 'package:flutter_jr_hackathon/style/color.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
-// タスクのリストのモックデータ
-final List<String> task = [
-  'Task 1',
-  'Task 2',
-  'Task 3',
-  'Task 4',
-  'Task 5',
-];
-
 class AddNewAchivement extends ConsumerWidget {
   const AddNewAchivement({
     super.key,
@@ -29,6 +20,14 @@ class AddNewAchivement extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final valueSlider = ref.watch(sliderValueNotifierProvider);
     final taskTitle = ref.watch(taskNameNotifierProvider);
+
+    final currentTasks = ref.watch(taskTitlesProvider).when(data: (data) {
+      return data;
+    }, error: (error, _) {
+      return [];
+    }, loading: () {
+      return [];
+    });
 
     return Container(
       padding: const EdgeInsets.all(30),
@@ -76,7 +75,7 @@ class AddNewAchivement extends ConsumerWidget {
               ],
             ),
             child: DropdownMenu(
-              dropdownMenuEntries: task
+              dropdownMenuEntries: currentTasks
                   .map((task) => DropdownMenuEntry(value: task, label: task))
                   .toList(),
               width: MediaQuery.of(context).size.width - 100,
@@ -94,7 +93,8 @@ class AddNewAchivement extends ConsumerWidget {
               children: [
                 Gap(40),
                 Text('進捗率を報告しよう！',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+                    style:
+                        TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
               ],
             ),
           ),
@@ -191,7 +191,8 @@ class AddNewAchivement extends ConsumerWidget {
               children: [
                 Gap(40),
                 Text('取り組んだことを報告しよう！',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+                    style:
+                        TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
               ],
             ),
           ),
@@ -247,12 +248,11 @@ class AddNewAchivement extends ConsumerWidget {
                     cursorColor: col['accent2'],
                     maxLines: null,
                     decoration: InputDecoration(
-                      hintText: '何をした?',
-                      focusedBorder: UnderlineInputBorder(
+                        hintText: '何をした?',
+                        focusedBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
                           color: col['accent2'] ?? Colors.black,
-                        ))
-                    ),
+                        ))),
                     controller: ref.watch(progressControllerProvider(progress)),
                   ),
                 ),

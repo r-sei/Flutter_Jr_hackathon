@@ -28,9 +28,9 @@ class SideMenu extends ConsumerWidget {
             ListTile(
               leading: ProfileIconButton(color: account.color, onPressed: null),
               title: Text(account.name),
-              // todo タップ時にアカウントを切り替え
               onTap: () {
                 ref.read(accountManagementProvider.notifier).change(account);
+                //多分ここでprogressの更新がいる
                 Navigator.pop(context);
               },
             ),

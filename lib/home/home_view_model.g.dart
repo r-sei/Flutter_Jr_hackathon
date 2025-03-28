@@ -6,7 +6,7 @@ part of 'home_view_model.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$progressHash() => r'24bb7a34470cc462b8c25f8cebb49cef0f756d01';
+String _$progressHash() => r'c3cff3903edf8eec008ef9567646a895404888e4';
 
 /// See also [progress].
 @ProviderFor(progress)
@@ -178,7 +178,7 @@ class _ProgressControllerProviderElement
   Progress? get progress => (origin as ProgressControllerProvider).progress;
 }
 
-String _$progressNotifierHash() => r'd28737b8a66d3c81ad5adeeb2dd4d09387647501';
+String _$progressNotifierHash() => r'ee0294c8d0ee678aa5971b0c13d24f05642ceb9a';
 
 /// See also [ProgressNotifier].
 @ProviderFor(ProgressNotifier)

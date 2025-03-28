@@ -26,9 +26,12 @@ mixin _$Task {
 
   /// タスクの作成者
   String get penalty => throw _privateConstructorUsedError;
+  String get groupName => throw _privateConstructorUsedError;
   double get score => throw _privateConstructorUsedError;
   int get likes => throw _privateConstructorUsedError;
+  @TimestampConverter()
   DateTime get createdAt => throw _privateConstructorUsedError;
+  @TimestampConverter()
   DateTime get updatedAt => throw _privateConstructorUsedError;
 
   /// Serializes this Task to a JSON map.
@@ -50,10 +53,11 @@ abstract class $TaskCopyWith<$Res> {
       String taskTitle,
       String createdBy,
       String penalty,
+      String groupName,
       double score,
       int likes,
-      DateTime createdAt,
-      DateTime updatedAt});
+      @TimestampConverter() DateTime createdAt,
+      @TimestampConverter() DateTime updatedAt});
 }
 
 /// @nodoc
@@ -75,6 +79,7 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
     Object? taskTitle = null,
     Object? createdBy = null,
     Object? penalty = null,
+    Object? groupName = null,
     Object? score = null,
     Object? likes = null,
     Object? createdAt = null,
@@ -96,6 +101,10 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
       penalty: null == penalty
           ? _value.penalty
           : penalty // ignore: cast_nullable_to_non_nullable
+              as String,
+      groupName: null == groupName
+          ? _value.groupName
+          : groupName // ignore: cast_nullable_to_non_nullable
               as String,
       score: null == score
           ? _value.score
@@ -129,10 +138,11 @@ abstract class _$$TaskImplCopyWith<$Res> implements $TaskCopyWith<$Res> {
       String taskTitle,
       String createdBy,
       String penalty,
+      String groupName,
       double score,
       int likes,
-      DateTime createdAt,
-      DateTime updatedAt});
+      @TimestampConverter() DateTime createdAt,
+      @TimestampConverter() DateTime updatedAt});
 }
 
 /// @nodoc
@@ -151,6 +161,7 @@ class __$$TaskImplCopyWithImpl<$Res>
     Object? taskTitle = null,
     Object? createdBy = null,
     Object? penalty = null,
+    Object? groupName = null,
     Object? score = null,
     Object? likes = null,
     Object? createdAt = null,
@@ -172,6 +183,10 @@ class __$$TaskImplCopyWithImpl<$Res>
       penalty: null == penalty
           ? _value.penalty
           : penalty // ignore: cast_nullable_to_non_nullable
+              as String,
+      groupName: null == groupName
+          ? _value.groupName
+          : groupName // ignore: cast_nullable_to_non_nullable
               as String,
       score: null == score
           ? _value.score
@@ -201,10 +216,11 @@ class _$TaskImpl implements _Task {
       required this.taskTitle,
       required this.createdBy,
       required this.penalty,
+      required this.groupName,
       required this.score,
       required this.likes,
-      required this.createdAt,
-      required this.updatedAt});
+      @TimestampConverter() required this.createdAt,
+      @TimestampConverter() required this.updatedAt});
 
   factory _$TaskImpl.fromJson(Map<String, dynamic> json) =>
       _$$TaskImplFromJson(json);
@@ -220,17 +236,21 @@ class _$TaskImpl implements _Task {
   @override
   final String penalty;
   @override
+  final String groupName;
+  @override
   final double score;
   @override
   final int likes;
   @override
+  @TimestampConverter()
   final DateTime createdAt;
   @override
+  @TimestampConverter()
   final DateTime updatedAt;
 
   @override
   String toString() {
-    return 'Task(id: $id, taskTitle: $taskTitle, createdBy: $createdBy, penalty: $penalty, score: $score, likes: $likes, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Task(id: $id, taskTitle: $taskTitle, createdBy: $createdBy, penalty: $penalty, groupName: $groupName, score: $score, likes: $likes, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -244,6 +264,8 @@ class _$TaskImpl implements _Task {
             (identical(other.createdBy, createdBy) ||
                 other.createdBy == createdBy) &&
             (identical(other.penalty, penalty) || other.penalty == penalty) &&
+            (identical(other.groupName, groupName) ||
+                other.groupName == groupName) &&
             (identical(other.score, score) || other.score == score) &&
             (identical(other.likes, likes) || other.likes == likes) &&
             (identical(other.createdAt, createdAt) ||
@@ -255,7 +277,7 @@ class _$TaskImpl implements _Task {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, taskTitle, createdBy,
-      penalty, score, likes, createdAt, updatedAt);
+      penalty, groupName, score, likes, createdAt, updatedAt);
 
   /// Create a copy of Task
   /// with the given fields replaced by the non-null parameter values.
@@ -279,10 +301,11 @@ abstract class _Task implements Task {
       required final String taskTitle,
       required final String createdBy,
       required final String penalty,
+      required final String groupName,
       required final double score,
       required final int likes,
-      required final DateTime createdAt,
-      required final DateTime updatedAt}) = _$TaskImpl;
+      @TimestampConverter() required final DateTime createdAt,
+      @TimestampConverter() required final DateTime updatedAt}) = _$TaskImpl;
 
   factory _Task.fromJson(Map<String, dynamic> json) = _$TaskImpl.fromJson;
 
@@ -297,12 +320,16 @@ abstract class _Task implements Task {
   @override
   String get penalty;
   @override
+  String get groupName;
+  @override
   double get score;
   @override
   int get likes;
   @override
+  @TimestampConverter()
   DateTime get createdAt;
   @override
+  @TimestampConverter()
   DateTime get updatedAt;
 
   /// Create a copy of Task
