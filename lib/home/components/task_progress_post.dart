@@ -24,9 +24,12 @@ class TaskProgressPost extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 8),
-            child: Text(progress.taskTitle),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(8, 8, 0, 0),
+              child: Text(progress.taskTitle),
+            ),
           ),
           Row(
             mainAxisSize: MainAxisSize.min,
@@ -90,8 +93,6 @@ class TaskProgressPost extends StatelessWidget {
                     ),
                   ),
                 ),
-                
-
               ],
             ),
           ),
