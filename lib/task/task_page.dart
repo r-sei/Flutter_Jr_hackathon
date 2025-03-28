@@ -21,8 +21,8 @@ class TaskPage extends ConsumerWidget {
     DateTime monday = now.subtract(Duration(days: currentWeekday - 1));
     DateTime sunday = now.add(Duration(days: 7 - currentWeekday));
 
-    String formattedMonday = DateFormat('MM/dd').format(monday);
-    String formattedSunday = DateFormat('MM/dd').format(sunday);
+    String formattedMonday = DateFormat('yyyy/MM/dd').format(monday);
+    String formattedSunday = DateFormat('yyyy/MM/dd').format(sunday);
 
     return '$formattedMonday - $formattedSunday';
   }

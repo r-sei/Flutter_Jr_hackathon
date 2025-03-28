@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 
 class RankingScoreWidget extends StatelessWidget {
@@ -50,7 +51,16 @@ class RankingScoreWidget extends StatelessWidget {
         Row(children: [
           const Gap(50),
           Expanded(
-            child: Text('$displayRank位: ' + rankEntry.key),
+            child: Row(
+              children: [
+                if (displayRank == 1) const FaIcon(FontAwesomeIcons.crown,color: Colors.amber),
+                if (displayRank == 2) FaIcon(FontAwesomeIcons.crown,color: Colors.grey.shade300),
+                if (displayRank == 3) FaIcon(FontAwesomeIcons.crown,color: Colors.brown.shade300),
+                if (displayRank >= 4) Gap(27),
+                Gap(4),
+                Text('$displayRank位: ' + rankEntry.key),
+              ],
+            ),
             ),
           // Gap(20),
           Text(rankEntry.value.toString()),
