@@ -16,6 +16,7 @@ class TaskFloatingActionButton extends StatelessWidget {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           context: context,
+          backgroundColor: Colors.grey[300],
           builder: (context) => AddNewTask()),
       child: Icon(Icons.add, color: col['text1']),
     );

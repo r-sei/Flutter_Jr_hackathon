@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_jr_hackathon/models/task.dart';
+import 'package:flutter_jr_hackathon/style/color.dart';
 import 'package:flutter_jr_hackathon/task/task_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -14,6 +15,15 @@ class CreateTaskButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.grey[300],
+        shadowColor: Colors.grey[500],
+        elevation: 0,
+        minimumSize: const Size(100, 50),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30),
+        ),
+      ),
       onPressed: () async {
         final penaltyTitle = ref.read(penaltyControllerProvider(task)).text;
         final taskTitle = ref.read(titleControllerProvider(task)).text;
@@ -26,7 +36,22 @@ class CreateTaskButton extends ConsumerWidget {
         ref.read(penaltyControllerProvider(task)).clear();
         Navigator.of(context).pop();
       },
-      child: const Text('設定する!'),
+      child: Text('設定する!',
+          style: TextStyle(
+              color: col['accent1'],
+              fontWeight: FontWeight.bold,
+              shadows: [
+                Shadow(
+                  blurRadius: 4,
+                  color: Colors.white,
+                  offset: Offset(1.5, 1.5),
+                ),
+                Shadow(
+                  blurRadius: 3,
+                  color: Color.fromARGB(255, 181, 181, 181),
+                  offset: Offset(-1.5, -1.5),
+                ),
+              ])),
     );
   }
 }
