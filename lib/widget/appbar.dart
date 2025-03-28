@@ -39,7 +39,6 @@ class MyAppBar extends ConsumerWidget implements PreferredSizeWidget {
     double wSize = MediaQuery.of(context).size.width;
     double margin = 5;
     // final account = ref.watch(accountManagementProvider);
-
     return AppBar(
       elevation: 0,
       shadowColor: Colors.transparent,
@@ -85,6 +84,7 @@ class MyAppBar extends ConsumerWidget implements PreferredSizeWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
+                                      //todo 現在のアカウントの名前に変更
                                       account.name,
                                       style: TextStyle(
                                         color: col['text1'],
