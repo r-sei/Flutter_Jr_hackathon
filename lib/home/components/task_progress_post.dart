@@ -96,6 +96,17 @@ class TaskProgressPost extends StatelessWidget {
               ],
             ),
           ),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(0, 0, 8, 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text('投稿日 '),
+                Text('XXXX/XX/XX'),
+              ],
+            ),
+          ),
+          
         ],
       ),
     );
