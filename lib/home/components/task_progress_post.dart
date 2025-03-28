@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_jr_hackathon/home/components/good_button.dart';
 import 'package:flutter_jr_hackathon/models/progress.dart';
@@ -38,10 +37,10 @@ class TaskProgressPost extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    
     final List<Task> taskList = ref.watch(tasksProvider).when(
       data: (data) {
-        List<Task> tasks = data.docs.map((e) => Task.fromJson(e.data())).toList();
+        List<Task> tasks =
+            data.docs.map((e) => Task.fromJson(e.data())).toList();
 
         // createdAt で降順ソート (新しい順)
         tasks.sort((a, b) => b.createdAt.compareTo(a.createdAt));
@@ -59,9 +58,10 @@ class TaskProgressPost extends ConsumerWidget {
       },
     );
 
-    DateTime taskCreatedDate = DateTime.now();  // エラー回避でDateTime.now()で初期化しているけど、ifで必ずヒットするから問題ないはず...
-    for(final task in taskList){
-      if(task.taskTitle == progress.taskTitle){
+    DateTime taskCreatedDate =
+        DateTime.now(); // エラー回避でDateTime.now()で初期化しているけど、ifで必ずヒットするから問題ないはず...
+    for (final task in taskList) {
+      if (task.taskTitle == progress.taskTitle) {
         taskCreatedDate = task.createdAt;
       }
     }
@@ -89,7 +89,8 @@ class TaskProgressPost extends ConsumerWidget {
                 child: Text(
                   '期限切れ',
                   style: TextStyle(
-                    color: getWeekMondayToSunday(taskCreatedDate) == getWeekMondayToSunday(DateTime.now())
+                    color: getWeekMondayToSunday(taskCreatedDate) ==
+                            getWeekMondayToSunday(DateTime.now())
                         ? Colors.white
                         : Colors.red,
                   ),
