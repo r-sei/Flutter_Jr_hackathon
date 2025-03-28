@@ -6,7 +6,7 @@ part of 'home_view_model.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$progressHash() => r'24bb7a34470cc462b8c25f8cebb49cef0f756d01';
+String _$progressHash() => r'c3cff3903edf8eec008ef9567646a895404888e4';
 
 /// See also [progress].
 @ProviderFor(progress)

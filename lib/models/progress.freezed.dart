@@ -27,6 +27,7 @@ mixin _$Progress {
   String get groupName => throw _privateConstructorUsedError;
   double get achieveLevel => throw _privateConstructorUsedError;
   List<String> get likes => throw _privateConstructorUsedError;
+  @TimestampConverter()
   DateTime get createdAt => throw _privateConstructorUsedError;
 
   /// Serializes this Progress to a JSON map.
@@ -52,7 +53,7 @@ abstract class $ProgressCopyWith<$Res> {
       String groupName,
       double achieveLevel,
       List<String> likes,
-      DateTime createdAt});
+      @TimestampConverter() DateTime createdAt});
 }
 
 /// @nodoc
@@ -132,7 +133,7 @@ abstract class _$$ProgressImplCopyWith<$Res>
       String groupName,
       double achieveLevel,
       List<String> likes,
-      DateTime createdAt});
+      @TimestampConverter() DateTime createdAt});
 }
 
 /// @nodoc
@@ -205,7 +206,7 @@ class _$ProgressImpl implements _Progress {
       required this.groupName,
       required this.achieveLevel,
       required final List<String> likes,
-      required this.createdAt})
+      @TimestampConverter() required this.createdAt})
       : _likes = likes;
 
   factory _$ProgressImpl.fromJson(Map<String, dynamic> json) =>
@@ -232,6 +233,7 @@ class _$ProgressImpl implements _Progress {
   }
 
   @override
+  @TimestampConverter()
   final DateTime createdAt;
 
   @override
@@ -292,14 +294,15 @@ class _$ProgressImpl implements _Progress {
 
 abstract class _Progress implements Progress {
   const factory _Progress(
-      {required final String progressID,
-      required final String userName,
-      required final String taskTitle,
-      required final String progressTitle,
-      required final String groupName,
-      required final double achieveLevel,
-      required final List<String> likes,
-      required final DateTime createdAt}) = _$ProgressImpl;
+          {required final String progressID,
+          required final String userName,
+          required final String taskTitle,
+          required final String progressTitle,
+          required final String groupName,
+          required final double achieveLevel,
+          required final List<String> likes,
+          @TimestampConverter() required final DateTime createdAt}) =
+      _$ProgressImpl;
 
   factory _Progress.fromJson(Map<String, dynamic> json) =
       _$ProgressImpl.fromJson;
@@ -319,6 +322,7 @@ abstract class _Progress implements Progress {
   @override
   List<String> get likes;
   @override
+  @TimestampConverter()
   DateTime get createdAt;
 
   /// Create a copy of Progress

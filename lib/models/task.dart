@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_jr_hackathon/models/timestamp_convert.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'task.freezed.dart';
@@ -13,8 +15,8 @@ abstract class Task with _$Task {
     required String groupName,
     required double score,
     required int likes,
-    required DateTime createdAt,
-    required DateTime updatedAt,
+    @TimestampConverter() required DateTime createdAt,
+    @TimestampConverter() required DateTime updatedAt,
   }) = _Task;
 
 factory Task.fromJson(Map<String, dynamic> json) => _$TaskFromJson(json);
