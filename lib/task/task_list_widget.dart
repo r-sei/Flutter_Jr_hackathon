@@ -34,11 +34,11 @@ class TaskListWidget extends ConsumerWidget {
     // 日曜日の日付を計算 (weekday が 7 は日曜日)
     DateTime sunday = dateTime.add(Duration(days: 7 - weekday));
 
-    // 月曜日と日曜日の日付を MM/DD 形式でフォーマット
-    String formattedMonday = DateFormat('MM/dd').format(monday);
-    String formattedSunday = DateFormat('MM/dd').format(sunday);
+    // 月曜日と日曜日の日付を yyyy/MM/DD 形式でフォーマット
+    String formattedMonday = DateFormat('yyyy/MM/dd').format(monday);
+    String formattedSunday = DateFormat('yyyy/MM/dd').format(sunday);
 
-    // 結果を "MM/DD - MM/DD" 形式で返す
+    // 結果を "yyyy/MM/DD - yyyy/MM/DD" 形式で返す
     return '$formattedMonday - $formattedSunday';
   }
 
@@ -155,7 +155,7 @@ class TaskListWidget extends ConsumerWidget {
                 ),
               ),
               Text(
-                task.penalty,
+                'ペナルティ：' + task.penalty,
                 style: const TextStyle(
                   fontSize: 16,
                 ),
@@ -163,6 +163,17 @@ class TaskListWidget extends ConsumerWidget {
               const Divider(
                 thickness: 2,
               ),
+              
+              const Row(children: [
+                Gap(110),
+                Expanded(
+                  child: Text('名前')
+                  ),
+                // Gap(20),
+                Text('スコア'),
+                Gap(50),
+              ],),
+              const Gap(10),
             ],
           ),
           // progressListが空の時にはソートせずにデフォルト値を入れるようにすれば、エラー回避可能？

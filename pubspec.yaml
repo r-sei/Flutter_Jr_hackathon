@@ -24,6 +24,7 @@ dependencies:
   gap: ^3.0.1
   percent_indicator: ^4.2.4
   firebase_auth: ^5.5.1
+  font_awesome_flutter: ^10.0.0
 
 dev_dependencies:
   json_serializable: ^6.9.0
