@@ -59,4 +59,8 @@ class TaskEdit extends _$TaskEdit {
   Future<void> editPenalty(String penalty, String id) async {
     await ref.read(taskCollectionProvider).doc(id).update({'penalty': penalty});
   }
+  Future<void> getAverageLike() async {
+    final res = ref.read(homeCollectionProvider).where('taskTitle', isEqualTo: 'Task 2');
+    print(res);
+  }
 }
