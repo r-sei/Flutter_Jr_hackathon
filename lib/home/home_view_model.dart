@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_jr_hackathon/core/firebase_providers.dart';
 import 'package:flutter_jr_hackathon/models/progress.dart';
+import 'package:flutter_jr_hackathon/widget/account_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:uuid/uuid.dart';
@@ -32,7 +33,7 @@ class ProgressNotifier extends _$ProgressNotifier {
       String taskTitle, String progressTitle, double achieveLevel) async {
     final progress = Progress(
         progressID: const Uuid().v4(),
-        userName: '',
+        userName: ref.watch(accountManagementProvider).name,
         taskTitle: taskTitle,
         progressTitle: progressTitle,
         achieveLevel: achieveLevel,

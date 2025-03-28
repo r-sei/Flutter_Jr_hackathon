@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_jr_hackathon/style/color.dart';
 import 'package:flutter_jr_hackathon/style/custom_shape.dart';
-import 'package:flutter_jr_hackathon/widget/account_notifier.dart';
 import 'package:flutter_jr_hackathon/widget/profile_icon_button.dart';
 import 'package:flutter_jr_hackathon/widget/tab.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -27,17 +26,19 @@ class MyAppBar extends ConsumerWidget implements PreferredSizeWidget {
     this.hSize = 100,
     this.tab = 75,
     this.topMargin = 20,
+    required this.account,
   });
 
   final double hSize;
   final double tab;
   final double topMargin;
+  final Account account;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     double wSize = MediaQuery.of(context).size.width;
     double margin = 5;
-    final account = ref.watch(accountManagementProvider);
+    // final account = ref.watch(accountManagementProvider);
 
     return AppBar(
       elevation: 0,
@@ -92,7 +93,7 @@ class MyAppBar extends ConsumerWidget implements PreferredSizeWidget {
                                   children: [
                                     Text(
                                       //todo 現在のアカウントの名前に変更
-                                      account.name, 
+                                      account.name,
                                       style: TextStyle(
                                         color: col['text1'],
                                         fontSize: 12,

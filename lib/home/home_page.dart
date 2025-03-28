@@ -3,6 +3,7 @@ import 'package:flutter_jr_hackathon/home/components/task_progress_post.dart';
 import 'package:flutter_jr_hackathon/home/home_floating_action_button.dart';
 import 'package:flutter_jr_hackathon/home/home_view_model.dart';
 import 'package:flutter_jr_hackathon/models/progress.dart';
+import 'package:flutter_jr_hackathon/widget/account_notifier.dart';
 import 'package:flutter_jr_hackathon/widget/appbar.dart';
 import 'package:flutter_jr_hackathon/widget/side_menu.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,7 +16,7 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    print('build homepage');
+    final account = ref.watch(accountManagementProvider);
     final List<Progress> progressList = ref.watch(progressProvider).when(
       data: (data) {
         return data.docs.map((e) => Progress.fromJson(e.data())).toList();
@@ -30,7 +31,7 @@ class HomePage extends ConsumerWidget {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: const MyAppBar(),
+      appBar: MyAppBar(account: account),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),

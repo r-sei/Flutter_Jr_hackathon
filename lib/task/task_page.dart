@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_jr_hackathon/task/task_floating_action_button.dart';
 import 'package:flutter_jr_hackathon/task/task_list_widget.dart';
+import 'package:flutter_jr_hackathon/widget/account_notifier.dart';
 import 'package:flutter_jr_hackathon/widget/appbar.dart';
 import 'package:flutter_jr_hackathon/widget/side_menu.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -21,12 +22,14 @@ class TaskPage extends ConsumerWidget {
 
     String formattedMonday = DateFormat('MM/dd').format(monday);
     String formattedSunday = DateFormat('MM/dd').format(sunday);
-    
+
     return '$formattedMonday - $formattedSunday';
   }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final account = ref.watch(accountManagementProvider);
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -52,7 +55,9 @@ class TaskPage extends ConsumerWidget {
         ),
       ),
       drawer: const SideMenu(),
-      appBar: const MyAppBar(),
+      appBar: MyAppBar(
+        account: account,
+      ),
       floatingActionButton: const TaskFloatingActionButton(),
     );
   }

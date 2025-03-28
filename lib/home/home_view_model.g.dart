@@ -178,7 +178,7 @@ class _ProgressControllerProviderElement
   Progress? get progress => (origin as ProgressControllerProvider).progress;
 }
 
-String _$progressNotifierHash() => r'd28737b8a66d3c81ad5adeeb2dd4d09387647501';
+String _$progressNotifierHash() => r'b9be408a8dd2dc9ac29514eb9a6c2dfb686e8e15';
 
 /// See also [ProgressNotifier].
 @ProviderFor(ProgressNotifier)
