@@ -41,7 +41,7 @@ class TaskProgressPost extends StatelessWidget {
                 ),
               ),
               const Text(
-                'が',
+                'は',
                 style: TextStyle(
                   fontSize: 24,
                 ),
@@ -93,6 +93,18 @@ class TaskProgressPost extends StatelessWidget {
                     ),
                   ),
                 ),
+              ],
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(0, 0, 8, 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text('投稿日 '),
+                Text('YYYY/MM/DD'),
+                // Text(
+                //     '${progress.createdAt.year}/${progress.createdAt.month}/${progress.createdAt.day}'),
               ],
             ),
           ),
