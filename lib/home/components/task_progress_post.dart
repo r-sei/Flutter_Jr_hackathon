@@ -24,6 +24,10 @@ class TaskProgressPost extends StatelessWidget {
       ),
       child: Column(
         children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Text(progress.taskTitle),
+          ),
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -50,19 +54,7 @@ class TaskProgressPost extends StatelessWidget {
                   fontSize: 32,
                 ),
               ),
-              const Text(
-                'を',
-                style: TextStyle(
-                  fontSize: 24,
-                ),
-              ),
             ],
-          ),
-          const Text(
-            '達成しました',
-            style: TextStyle(
-              fontSize: 24,
-            ),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -76,20 +68,30 @@ class TaskProgressPost extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 40),
-                const Text('達成率'),
-                LinearPercentIndicator(
-                  width: 140.0,
-                  lineHeight: 14.0,
-                  percent: progress.achieveLevel,
-                  backgroundColor: Colors.white,
-                  progressColor: Colors.green,
-                  leading: Row(
-                    children: [
-                      Text('${progress.achieveLevel * 100}'),
-                      const Text('%'),
-                    ],
+                const Text('達成率'),                      
+                Text('${progress.achieveLevel * 100}'),
+                const Text('%'),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Container(
+                    width: 142,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black, width: 1),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: LinearPercentIndicator(
+                      width: 140.0,
+                      lineHeight: 14.0,
+                      percent: progress.achieveLevel,
+                      backgroundColor: Colors.white,
+                      progressColor: Colors.green, 
+                      barRadius: Radius.zero,
+                      padding: EdgeInsets.zero,
+                    ),
                   ),
                 ),
+                
+
               ],
             ),
           ),
