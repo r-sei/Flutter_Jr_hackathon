@@ -4,6 +4,7 @@ import 'package:flutter_jr_hackathon/models/progress.dart';
 import 'package:flutter_jr_hackathon/models/task.dart';
 import 'package:flutter_jr_hackathon/task/task_view_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
@@ -138,9 +139,9 @@ class TaskProgressPost extends ConsumerWidget {
                   ),
                 ),
                 const SizedBox(width: 40),
-                const Text('達成率'),
-                Text('${progress.achieveLevel * 100}'),
-                const Text('%'),
+                const Text('進捗度:'),
+                // Text('${progress.achieveLevel * 100}'),
+                // const Text('%'),
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
                   child: Container(
@@ -153,13 +154,16 @@ class TaskProgressPost extends ConsumerWidget {
                       width: 140.0,
                       lineHeight: 14.0,
                       percent: progress.achieveLevel,
-                      backgroundColor: Colors.white,
+                      backgroundColor: Colors.grey.shade200,
                       progressColor: Colors.green,
                       barRadius: Radius.zero,
                       padding: EdgeInsets.zero,
                     ),
                   ),
                 ),
+                const Gap(8),
+                Text('${progress.achieveLevel * 100}'),
+                const Text('%'),
               ],
             ),
           ),

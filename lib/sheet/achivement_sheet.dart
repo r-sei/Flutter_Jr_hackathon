@@ -172,7 +172,7 @@ class AddNewAchivement extends ConsumerWidget {
                         max: 100,
                         activeColor: col['accent2'],
                         inactiveColor: col['appbar'],
-                        divisions: 4,
+                        divisions: 10,
                         onChanged: (value) => ref
                             .read(sliderValueNotifierProvider.notifier)
                             .update(value),
