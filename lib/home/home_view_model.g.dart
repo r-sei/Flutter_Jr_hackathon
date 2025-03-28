@@ -178,7 +178,7 @@ class _ProgressControllerProviderElement
   Progress? get progress => (origin as ProgressControllerProvider).progress;
 }
 
-String _$progressNotifierHash() => r'ee0294c8d0ee678aa5971b0c13d24f05642ceb9a';
+String _$progressNotifierHash() => r'a621a2e653642cdadc5449fcfe6be6ee153ed14a';
 
 /// See also [ProgressNotifier].
 @ProviderFor(ProgressNotifier)
@@ -194,7 +194,7 @@ final progressNotifierProvider =
 );
 
 typedef _$ProgressNotifier = AutoDisposeNotifier<String>;
-String _$likesNotifierHash() => r'49032e02f9b4c7fe535ea7287e394d8c6e0f863b';
+String _$likesNotifierHash() => r'a44a1df84cc1ca8fa5d3d8b2826dd6419d10f506';
 
 /// See also [LikesNotifier].
 @ProviderFor(LikesNotifier)

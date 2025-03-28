@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_jr_hackathon/core/firebase_providers.dart';
 import 'package:flutter_jr_hackathon/models/progress.dart';
-import 'package:flutter_jr_hackathon/widget/account_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:uuid/uuid.dart';
@@ -32,11 +31,11 @@ class ProgressNotifier extends _$ProgressNotifier {
   }
 
   // 進捗作成
-  Future<void> create(
-      String taskTitle, String progressTitle, double achieveLevel) async {
+  Future<void> create(String taskTitle, String progressTitle,
+      double achieveLevel, String currentUserName) async {
     final progress = Progress(
         progressID: const Uuid().v4(),
-        userName: ref.watch(accountManagementProvider).name,
+        userName: currentUserName,
         taskTitle: taskTitle,
         progressTitle: progressTitle,
         groupName: 'Friends',
@@ -61,17 +60,17 @@ class LikesNotifier extends _$LikesNotifier {
 
   // todo
   // 最後の引数用修正
-  Future<void> add(Progress progress) async {
+  Future<void> add(Progress progress, String currentUser) async {
     await ref.read(homeCollectionProvider).doc(progress.progressID).update({
-      'likes': FieldValue.arrayUnion([progress.userName]),
+      'likes': FieldValue.arrayUnion([currentUser]),
     });
   }
 
   // todo
   // 最後の引数用修正
-  Future<void> delete(Progress progress) async {
+  Future<void> delete(Progress progress, String currentUser) async {
     await ref.read(homeCollectionProvider).doc(progress.progressID).update({
-      'likes': FieldValue.arrayRemove([progress.userName]),
+      'likes': FieldValue.arrayRemove([currentUser]),
     });
   }
 }

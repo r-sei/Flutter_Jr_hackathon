@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_jr_hackathon/auth/current_user_provider.dart';
 import 'package:flutter_jr_hackathon/models/task.dart';
 import 'package:flutter_jr_hackathon/style/color.dart';
 import 'package:flutter_jr_hackathon/task/task_view_model.dart';
@@ -14,6 +15,18 @@ class CreateTaskButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final currentUserName = ref.watch(userNameProvider).when(
+      data: (data) {
+        return data;
+      },
+      error: (err, _) {
+        return '';
+      },
+      loading: () {
+        return '';
+      },
+    );
+
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.grey[300],
@@ -30,7 +43,7 @@ class CreateTaskButton extends ConsumerWidget {
 
         await ref
             .read(taskEditProvider.notifier)
-            .create(taskTitle, penaltyTitle);
+            .create(taskTitle, penaltyTitle, currentUserName!);
 
         ref.read(titleControllerProvider(task)).clear();
         ref.read(penaltyControllerProvider(task)).clear();
@@ -40,7 +53,7 @@ class CreateTaskButton extends ConsumerWidget {
           style: TextStyle(
               color: col['accent1'],
               fontWeight: FontWeight.bold,
-              shadows: [
+              shadows: const [
                 Shadow(
                   blurRadius: 4,
                   color: Colors.white,

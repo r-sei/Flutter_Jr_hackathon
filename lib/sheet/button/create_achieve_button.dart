@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_jr_hackathon/auth/current_user_provider.dart';
 import 'package:flutter_jr_hackathon/home/home_view_model.dart';
 import 'package:flutter_jr_hackathon/models/progress.dart';
 import 'package:flutter_jr_hackathon/style/color.dart';
@@ -18,6 +19,18 @@ class CreateAchieveButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final currentUserName = ref.watch(userNameProvider).when(
+      data: (data) {
+        return data;
+      },
+      error: (err, _) {
+        return '';
+      },
+      loading: () {
+        return '';
+      },
+    );
+
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.grey[300],
@@ -32,9 +45,8 @@ class CreateAchieveButton extends ConsumerWidget {
         final progressTitle =
             ref.read(ProgressControllerProvider(progress)).text;
 
-        await ref
-            .read(progressNotifierProvider.notifier)
-            .create(taskTitle, progressTitle, achieveLevel / 100);
+        await ref.read(progressNotifierProvider.notifier).create(
+            taskTitle, progressTitle, achieveLevel / 100, currentUserName!);
 
         ref.read(ProgressControllerProvider(progress)).clear();
         Navigator.of(context).pop();

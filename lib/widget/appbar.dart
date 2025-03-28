@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_jr_hackathon/auth/current_user_provider.dart';
 import 'package:flutter_jr_hackathon/style/color.dart';
 import 'package:flutter_jr_hackathon/style/custom_shape.dart';
 import 'package:flutter_jr_hackathon/widget/profile_icon_button.dart';
@@ -36,16 +37,31 @@ class MyAppBar extends ConsumerWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final currentUserName = ref.watch(userNameProvider).when(
+      data: (data) {
+        return data;
+      },
+      error: (err, _) {
+        return '';
+      },
+      loading: () {
+        return '';
+      },
+    );
+
     double wSize = MediaQuery.of(context).size.width;
     double margin = 5;
+
     // final account = ref.watch(accountManagementProvider);
     return AppBar(
       elevation: 0,
       shadowColor: Colors.transparent,
       surfaceTintColor: Colors.transparent,
       leading: ProfileIconButton(
-          color: account.color,
-          onPressed: () => Scaffold.of(context).openDrawer()),
+          color: Colors.grey,
+          // onPressed: () => Scaffold.of(context).openDrawer(),
+          onPressed: () {},
+          ),
       flexibleSpace: Stack(children: [
         MyTab(
           hSize: hSize,
@@ -85,7 +101,7 @@ class MyAppBar extends ConsumerWidget implements PreferredSizeWidget {
                                   children: [
                                     Text(
                                       //todo 現在のアカウントの名前に変更
-                                      account.name,
+                                      currentUserName!,
                                       style: TextStyle(
                                         color: col['text1'],
                                         fontSize: 12,

@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_jr_hackathon/core/firebase_providers.dart';
 import 'package:flutter_jr_hackathon/models/task.dart';
-import 'package:flutter_jr_hackathon/widget/account_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:uuid/uuid.dart';
@@ -35,11 +34,12 @@ class TaskEdit extends _$TaskEdit {
   }
 
   //タスク作成
-  Future<void> create(String title, String penalty) async {
+  Future<void> create(
+      String title, String penalty, String currentUserName) async {
     final task = Task(
         id: const Uuid().v4(),
         taskTitle: title,
-        createdBy: ref.watch(accountManagementProvider).name,
+        createdBy: currentUserName,
         penalty: penalty,
         groupName: 'Friends',
         score: 0,
@@ -59,8 +59,11 @@ class TaskEdit extends _$TaskEdit {
   Future<void> editPenalty(String penalty, String id) async {
     await ref.read(taskCollectionProvider).doc(id).update({'penalty': penalty});
   }
+
   Future<void> getAverageLike() async {
-    final res = ref.read(homeCollectionProvider).where('taskTitle', isEqualTo: 'Task 2');
+    final res = ref
+        .read(homeCollectionProvider)
+        .where('taskTitle', isEqualTo: 'Task 2');
     print(res);
   }
 }

@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_jr_hackathon/models/task.dart';
 import 'package:flutter_jr_hackathon/task/task_floating_action_button.dart';
 import 'package:flutter_jr_hackathon/task/task_list_widget.dart';
+import 'package:flutter_jr_hackathon/task/task_view_model.dart';
 import 'package:flutter_jr_hackathon/widget/account_notifier.dart';
 import 'package:flutter_jr_hackathon/widget/appbar.dart';
-import 'package:flutter_jr_hackathon/widget/side_menu.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
-import 'package:flutter_jr_hackathon/task/task_view_model.dart';
 
 class TaskPage extends ConsumerWidget {
   const TaskPage({
@@ -30,7 +29,6 @@ class TaskPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
     final List<Task> taskList = ref.watch(tasksProvider).when(
       data: (data) {
         List<Task> tasks = data.docs.map((e) => Task.fromJson(e.data())).toList();
@@ -96,7 +94,7 @@ class TaskPage extends ConsumerWidget {
           ),
         ),
       ),
-      drawer: const SideMenu(),
+      // drawer: const SideMenu(),
       appBar: MyAppBar(
         account: account,
       ),

@@ -44,8 +44,7 @@ class TaskListWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-
-    print('----------taskTitle: ' + task.taskTitle + '----------');
+    print('----------taskTitle: ${task.taskTitle}----------');
 
     final List<Progress> progressList = ref.watch(progressProvider).when(
       data: (data) {
@@ -66,9 +65,10 @@ class TaskListWidget extends ConsumerWidget {
     List<String> nameList = [];
     // print(task.groupName);
     // print(progressList);
-    for(final progress in progressList){
+    for (final progress in progressList) {
       // print(progress.groupName);
-      if(progress.groupName == task.groupName && !nameList.contains(progress.userName)){
+      if (progress.groupName == task.groupName &&
+          !nameList.contains(progress.userName)) {
         nameList.add(progress.userName);
       }
     }
@@ -76,18 +76,19 @@ class TaskListWidget extends ConsumerWidget {
     // あるタスクに対する各々のスコアを計算
     Map<String, double> taskScores = {};
     // print(nameList);
-    for(final userName in nameList){
+    for (final userName in nameList) {
       // あるuserNameのtaskTitleに対するスコアを計算
       // print(userName);
       int postCount = 0;
       double average = 0;
       double score = 0;
       double maxAchieveLevel = 0;
-      for(final progress in progressList){
-        if(progress.taskTitle == task.taskTitle && progress.userName == userName){
+      for (final progress in progressList) {
+        if (progress.taskTitle == task.taskTitle &&
+            progress.userName == userName) {
           average = average + progress.likes.length;
           postCount++;
-          if(maxAchieveLevel < progress.achieveLevel){
+          if (maxAchieveLevel < progress.achieveLevel) {
             maxAchieveLevel = progress.achieveLevel;
           }
         }
@@ -152,7 +153,7 @@ class TaskListWidget extends ConsumerWidget {
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
                 ),
-                ),
+              ),
               Text(
                 task.penalty,
                 style: const TextStyle(
@@ -161,43 +162,52 @@ class TaskListWidget extends ConsumerWidget {
               ),
               const Divider(
                 thickness: 2,
-                ),
-            ],),
-            // progressListが空の時にはソートせずにデフォルト値を入れるようにすれば、エラー回避可能？
-            // collapsed: RankingScoreWidget(
-            //   rank: taskScores.isNotEmpty
-            //       ? ((taskScores.entries.toList()..sort((a, b) => b.value.compareTo(a.value))).first.value.isFinite
-            //           ? (taskScores.entries.toList()..sort((a, b) => b.value.compareTo(a.value))).first.value.toInt()
-            //           : 1)
-            //       : 1,
-            //   taskScores: taskScores,
-            // ),
+              ),
+            ],
+          ),
+          // progressListが空の時にはソートせずにデフォルト値を入れるようにすれば、エラー回避可能？
+          // collapsed: RankingScoreWidget(
+          //   rank: taskScores.isNotEmpty
+          //       ? ((taskScores.entries.toList()..sort((a, b) => b.value.compareTo(a.value))).first.value.isFinite
+          //           ? (taskScores.entries.toList()..sort((a, b) => b.value.compareTo(a.value))).first.value.toInt()
+          //           : 1)
+          //       : 1,
+          //   taskScores: taskScores,
+          // ),
 
-            collapsed: RankingScoreWidget(rank: 1, taskScores: taskScores,),
+          collapsed: RankingScoreWidget(
+            rank: 1,
+            taskScores: taskScores,
+          ),
 
-            // expanded: Column(
-            //   children: [
-            //     if (taskScores.isNotEmpty)  // taskScoresが空でない場合のみ処理
-            //       for (var entry in taskScores.entries.toList()..sort((a, b) => b.value.compareTo(a.value)))
-            //         RankingScoreWidget(
-            //           rank: entry.value.isFinite ? entry.value.toInt() : 0,
-            //           taskScores: taskScores,  // NaNやInfinityの場合は0を設定
-            //         )
-            //     else
-            //       RankingScoreWidget(
-            //         rank: 0,
-            //         taskScores: taskScores,
-            //         ),  // taskScoresが空の場合にはデフォルト値として0を設定
-            //   ],
-            // ),
+          // expanded: Column(
+          //   children: [
+          //     if (taskScores.isNotEmpty)  // taskScoresが空でない場合のみ処理
+          //       for (var entry in taskScores.entries.toList()..sort((a, b) => b.value.compareTo(a.value)))
+          //         RankingScoreWidget(
+          //           rank: entry.value.isFinite ? entry.value.toInt() : 0,
+          //           taskScores: taskScores,  // NaNやInfinityの場合は0を設定
+          //         )
+          //     else
+          //       RankingScoreWidget(
+          //         rank: 0,
+          //         taskScores: taskScores,
+          //         ),  // taskScoresが空の場合にはデフォルト値として0を設定
+          //   ],
+          // ),
 
-
-            expanded: Column(children: [
-              for(int i=0; i < nameList.length; i++) ...{RankingScoreWidget(rank: i+1, taskScores: taskScores,)}
-            ],),
-            
+          expanded: Column(
+            children: [
+              for (int i = 0; i < nameList.length; i++) ...{
+                RankingScoreWidget(
+                  rank: i + 1,
+                  taskScores: taskScores,
+                )
+              }
+            ],
           ),
         ),
+      ),
     );
   }
 }

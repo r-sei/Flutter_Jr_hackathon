@@ -5,7 +5,6 @@ import 'package:flutter_jr_hackathon/home/home_view_model.dart';
 import 'package:flutter_jr_hackathon/models/progress.dart';
 import 'package:flutter_jr_hackathon/widget/account_notifier.dart';
 import 'package:flutter_jr_hackathon/widget/appbar.dart';
-import 'package:flutter_jr_hackathon/widget/side_menu.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
@@ -47,7 +46,7 @@ class HomePage extends ConsumerWidget {
           ),
         ),
       ),
-      drawer: const SideMenu(),
+      // drawer: const SideMenu(),
       floatingActionButton: const HomeFloatingActionButton(),
     );
   }
