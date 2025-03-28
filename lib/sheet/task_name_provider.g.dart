@@ -6,6 +6,22 @@ part of 'task_name_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+String _$taskTitlesHash() => r'fd539e4d9d7fc4ae87f980801b1aee45ab92b539';
+
+/// See also [taskTitles].
+@ProviderFor(taskTitles)
+final taskTitlesProvider = AutoDisposeFutureProvider<List<String>>.internal(
+  taskTitles,
+  name: r'taskTitlesProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$taskTitlesHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef TaskTitlesRef = AutoDisposeFutureProviderRef<List<String>>;
 String _$taskNameNotifierHash() => r'2ecaf4b4c5ea98e5f50a79b5a93911761d23552d';
 
 /// See also [TaskNameNotifier].
