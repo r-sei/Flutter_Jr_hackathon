@@ -165,13 +165,13 @@ class TaskListWidget extends ConsumerWidget {
               ),
               
               const Row(children: [
-                Gap(110),
+                Gap(120),
                 Expanded(
                   child: Text('名前')
                   ),
                 // Gap(20),
                 Text('スコア'),
-                Gap(50),
+                Gap(55),
               ],),
               const Gap(10),
             ],

@@ -63,7 +63,7 @@ class RankingScoreWidget extends StatelessWidget {
             ),
             ),
           // Gap(20),
-          Text(rankEntry.value.toString()),
+          Text(rankEntry.value.toStringAsFixed(2)),
           const Gap(100),
         ],),
         const Gap(10),
