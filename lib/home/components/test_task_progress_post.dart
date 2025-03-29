@@ -8,13 +8,11 @@ import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
-class TaskProgressPost extends ConsumerWidget {
-  TaskProgressPost({
-    super.key,
-    required this.progress,
-  });
+class TestTaskProgressPost extends ConsumerWidget {
+  TestTaskProgressPost({super.key, required this.progress});
 
   final Progress progress;
+
   final oneWeekAgo = DateTime.now().subtract(const Duration(days: 7));
   //todo: 現在選択されているアカウントに応じたtileのUIに変更（いいねボタンとか特に）
 
@@ -68,28 +66,55 @@ class TaskProgressPost extends ConsumerWidget {
     }
 
     return Container(
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(
-          color: Colors.white,
-          width: 1,
-        ),
+        border: Border.all(color: Colors.grey.shade300, width: 1),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // ヘッダー部分（アイコン + ユーザー情報）
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(8, 8, 0, 0),
-                child: Text(progress.taskTitle),
+              Expanded(
+                child: Row(
+                  children: [
+                    CircleAvatar(
+                      radius: 24,
+                      backgroundColor: Colors.grey.shade200,
+                      child: Text(progress.userName[0]),
+                    ),
+                    const Gap(8),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          progress.userName,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                        Text(
+                          DateFormat('yyyy/MM/dd').format(progress.createdAt),
+                          style: TextStyle(
+                              fontSize: 12, color: Colors.grey.shade600),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
+              const Gap(16),
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 8, 8, 0),
                 child: Text(
                   '期限切れ',
                   style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
                     color: getWeekMondayToSunday(taskCreatedDate) ==
                             getWeekMondayToSunday(DateTime.now())
                         ? Colors.white
@@ -99,85 +124,60 @@ class TaskProgressPost extends ConsumerWidget {
               ),
             ],
           ),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                progress.userName,
-                style: const TextStyle(
-                  fontSize: 32,
-                ),
+          const Gap(8),
+          // タスクタイトル
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+            decoration: BoxDecoration(
+              color: Colors.blue.shade50,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Text(
+              progress.taskTitle,
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
-              const Text(
-                'は',
-                style: TextStyle(
-                  fontSize: 24,
-                ),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                progress.progressTitle,
-                style: const TextStyle(
-                  fontSize: 32,
-                ),
-              ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              children: [
-                GoodButton(progress: progress),
-                Text(
-                  progress.likes.length.toString(),
-                  style: const TextStyle(
-                    fontSize: 20,
-                  ),
-                ),
-                const SizedBox(width: 40),
-                // const Text('進捗度'),
-                const Icon(Icons.directions_run),
-                // Text('${progress.achieveLevel * 100}'),
-                // const Text('%'),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Container(
-                    width: 142,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey, width: 1),
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                    child: LinearPercentIndicator(
-                      width: 140.0,
-                      lineHeight: 14.0,
-                      percent: progress.achieveLevel,
-                      backgroundColor: Colors.grey.shade200,
-                      progressColor: Colors.green,
-                      barRadius: Radius.zero,
-                      padding: EdgeInsets.zero,
-                    ),
-                  ),
-                ),
-                const Gap(8),
-                Text('${progress.achieveLevel * 100}'),
-                const Text('%'),
-              ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0, 0, 8, 8),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                const Text('投稿日 '),
-                Text(
-                    '${progress.createdAt.year}/${progress.createdAt.month}/${progress.createdAt.day}'),
-              ],
-            ),
+          const Gap(8),
+          // 本文
+          Text(
+            progress.progressTitle,
+            style: const TextStyle(fontSize: 16),
+          ),
+          const Gap(12),
+          // フッター部分（いいねボタン + 進捗バー）
+          Row(
+            children: [
+              GoodButton(progress: progress),
+              const Gap(4),
+              Text(
+                progress.likes.length.toString(),
+                style: const TextStyle(fontSize: 14),
+              ),
+              const Gap(24),
+              const Icon(Icons.directions_run, size: 18),
+              const Gap(4),
+              Container(
+                width: 202.0,
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey, width: 1),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: LinearPercentIndicator(
+                  width: 200.0,
+                  lineHeight: 14.0,
+                  percent: progress.achieveLevel,
+                  backgroundColor: Colors.grey.shade200,
+                  progressColor: Colors.green,
+                  barRadius: Radius.zero,
+                  padding: EdgeInsets.zero,
+                ),
+              ),
+              const Gap(8),
+              Text('${(progress.achieveLevel * 100).toInt()}%'),
+            ],
           ),
         ],
       ),

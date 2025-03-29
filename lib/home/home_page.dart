@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_jr_hackathon/home/components/task_progress_post.dart';
+import 'package:flutter_jr_hackathon/home/components/test_task_progress_post.dart';
 import 'package:flutter_jr_hackathon/home/home_floating_action_button.dart';
 import 'package:flutter_jr_hackathon/home/home_view_model.dart';
 import 'package:flutter_jr_hackathon/models/progress.dart';
@@ -37,9 +37,13 @@ class HomePage extends ConsumerWidget {
           child: ListView(
             children: [
               for (final progress in progressList) ...{
-                TaskProgressPost(
+                TestTaskProgressPost(
                   progress: progress,
                 ),
+
+                // TaskProgressPost(
+                //   progress: progress,
+                // ),
                 const Gap(16),
               },
             ],
